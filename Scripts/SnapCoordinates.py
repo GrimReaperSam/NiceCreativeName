@@ -1,6 +1,10 @@
 import sys
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/Imgs/'
+import pandas as pd
 
+base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
+
+csv_dir = base_dir + 'Data/output.csv'
+img_dir = base_dir + 'Imgs/'
 
 current_coord = None
 def createScreenshot(coords):
@@ -12,7 +16,7 @@ def createScreenshot(coords):
 		print(current_coord)
 		if not current_coord:
 			return;
-		qgis.utils.iface.mapCanvas().saveAsImage("%s%.3f%.3f.png" % (base_dir, current_coord[0], current_coord[1]))
+		qgis.utils.iface.mapCanvas().saveAsImage("%s%s.png" % (img_dir, current_coord[0]))
 		setNextFeatureExtent()
 
 
@@ -20,15 +24,17 @@ def createScreenshot(coords):
 		global current_coord
 		current_coord = next(coords_iter, None)
 		if current_coord is None:
-			qgis.utils.iface.mapCanvas().mapCanvasRefreshed.disconnect( exportMap)
+			qgis.utils.iface.mapCanvas().mapCanvasRefreshed.disconnect(exportMap)
 		else:
-			a = QgsPointXY (*current_coord)
+			a = QgsPointXY (*current_coord[1:])
 			qgis.utils.iface.mapCanvas().setCenter(a)
 			qgis.utils.iface.mapCanvas().refreshAllLayers()
 
 
-	qgis.utils.iface.mapCanvas().mapCanvasRefreshed.connect( exportMap)
+	qgis.utils.iface.mapCanvas().mapCanvasRefreshed.connect(exportMap)
 	setNextFeatureExtent()
 
-coords = [(121.535530, 25.052545), (121.529050,25.050271), (121.527214, 25.039836)]
+
+dataset = pd.read_csv(csv_dir)
+coords = [tuple(x) for x in dataset[['Address', 'Lng','Lat']].values]
 createScreenshot(coords)

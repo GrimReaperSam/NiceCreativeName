@@ -18,10 +18,10 @@
   </projectCrs>
   <layer-tree-group>
     <customproperties/>
-    <layer-tree-layer providerKey="wms" id="101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72" expanded="0" name="101年版航測影像" checked="Qt::Checked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2012&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/">
+    <layer-tree-layer name="101年版航測影像" providerKey="wms" checked="Qt::Checked" expanded="0" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2012&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" id="101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer providerKey="wms" id="101年版地形圖_d9362b05_bb6b_48fd_82f2_700f32471f44" expanded="1" name="101年版地形圖" checked="Qt::Unchecked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=DGN_M101&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/">
+    <layer-tree-layer name="101年版地形圖" providerKey="wms" checked="Qt::Unchecked" expanded="1" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=DGN_M101&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" id="101年版地形圖_d9362b05_bb6b_48fd_82f2_700f32471f44">
       <customproperties/>
     </layer-tree-layer>
     <custom-order enabled="0">
@@ -29,17 +29,17 @@
       <item>101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72</item>
     </custom-order>
   </layer-tree-group>
-  <snapping-settings unit="1" mode="2" type="1" tolerance="12" enabled="0" intersection-snapping="0">
+  <snapping-settings type="1" tolerance="12" intersection-snapping="0" mode="2" enabled="0" unit="1">
     <individual-layer-settings/>
   </snapping-settings>
   <relations/>
-  <mapcanvas annotationsVisible="1" name="theMapCanvas">
+  <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>degrees</units>
     <extent>
-      <xmin>121.53395659006498875</xmin>
-      <ymin>25.05177179109633556</ymin>
-      <xmax>121.53710340993499983</xmax>
-      <ymax>25.05331820890366146</ymax>
+      <xmin>121.5239665900649868</xmin>
+      <ymin>25.0572367910963365</ymin>
+      <xmax>121.52711340993499789</xmax>
+      <ymax>25.0587832089036624</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -57,21 +57,21 @@
     <rendermaptile>0</rendermaptile>
   </mapcanvas>
   <legend updateDrawingOrder="true">
-    <legendlayer open="false" showFeatureCount="0" checked="Qt::Checked" name="101年版航測影像" drawingOrder="-1">
-      <filegroup open="false" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72" visible="1"/>
+    <legendlayer name="101年版航測影像" checked="Qt::Checked" drawingOrder="-1" showFeatureCount="0" open="false">
+      <filegroup hidden="false" open="false">
+        <legendlayerfile visible="1" layerid="101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72" isInOverview="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer open="true" showFeatureCount="0" checked="Qt::Unchecked" name="101年版地形圖" drawingOrder="-1">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="101年版地形圖_d9362b05_bb6b_48fd_82f2_700f32471f44" visible="0"/>
+    <legendlayer name="101年版地形圖" checked="Qt::Unchecked" drawingOrder="-1" showFeatureCount="0" open="true">
+      <filegroup hidden="false" open="true">
+        <legendlayerfile visible="0" layerid="101年版地形圖_d9362b05_bb6b_48fd_82f2_700f32471f44" isInOverview="0"/>
       </filegroup>
     </legendlayer>
   </legend>
   <mapViewDocks/>
   <mapViewDocks3D/>
   <projectlayers>
-    <maplayer refreshOnNotifyMessage="" type="raster" minScale="1e+8" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0" autoRefreshEnabled="0">
+    <maplayer autoRefreshTime="0" autoRefreshEnabled="0" type="raster" refreshOnNotifyMessage="" maxScale="0" minScale="1e+8" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -114,7 +114,7 @@
             <description></description>
             <projectionacronym></projectionacronym>
             <ellipsoidacronym></ellipsoidacronym>
-            <geographicflag>false</geographicflag>
+            <geographicflag>true</geographicflag>
           </spatialrefsys>
         </crs>
         <extent/>
@@ -131,7 +131,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer type="singlebandcolordata" band="1" alphaBand="-1" opacity="1">
+        <rasterrenderer type="singlebandcolordata" opacity="1" alphaBand="-1" band="1">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -142,13 +142,13 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation saturation="0" grayscaleMode="0" colorizeStrength="100" colorizeOn="0" colorizeRed="255" colorizeGreen="128" colorizeBlue="128"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeOn="0" colorizeBlue="128" colorizeGreen="128" saturation="0" grayscaleMode="0" colorizeStrength="100" colorizeRed="255"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
     </maplayer>
-    <maplayer refreshOnNotifyMessage="" type="raster" minScale="1e+8" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0" autoRefreshEnabled="0">
+    <maplayer autoRefreshTime="0" autoRefreshEnabled="0" type="raster" refreshOnNotifyMessage="" maxScale="0" minScale="1e+8" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -208,7 +208,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer type="singlebandcolordata" band="1" alphaBand="-1" opacity="1">
+        <rasterrenderer type="singlebandcolordata" opacity="1" alphaBand="-1" band="1">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -219,8 +219,8 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation saturation="0" grayscaleMode="0" colorizeStrength="100" colorizeOn="0" colorizeRed="255" colorizeGreen="128" colorizeBlue="128"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeOn="0" colorizeBlue="128" colorizeGreen="128" saturation="0" grayscaleMode="0" colorizeStrength="100" colorizeRed="255"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
@@ -231,91 +231,91 @@
     <layer id="101年版航測影像_9b028b23_649d_4c79_ba1d_245e3214ff72"/>
   </layerorder>
   <properties>
+    <WMSContactMail type="QString"></WMSContactMail>
+    <WMSOnlineResource type="QString"></WMSOnlineResource>
     <Measure>
       <Ellipsoid type="QString">WGS84</Ellipsoid>
     </Measure>
-    <WMSOnlineResource type="QString"></WMSOnlineResource>
-    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
-    <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
-    <WMSServiceTitle type="QString"></WMSServiceTitle>
-    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
-    <WMSPrecision type="QString">8</WMSPrecision>
-    <Gui>
-      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
-      <CanvasColorRedPart type="int">255</CanvasColorRedPart>
-      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
-      <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
-      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
-      <CanvasColorBluePart type="int">255</CanvasColorBluePart>
-      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
-    </Gui>
+    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
+    <Macros>
+      <pythonCode type="QString"></pythonCode>
+    </Macros>
+    <PositionPrecision>
+      <DecimalPlaces type="int">2</DecimalPlaces>
+      <DegreeFormat type="QString">MU</DegreeFormat>
+      <Automatic type="bool">true</Automatic>
+    </PositionPrecision>
+    <WFSLayers type="QStringList"/>
+    <WMSContactOrganization type="QString"></WMSContactOrganization>
+    <WMSImageQuality type="int">90</WMSImageQuality>
+    <WMSContactPerson type="QString"></WMSContactPerson>
+    <WMSContactPosition type="QString"></WMSContactPosition>
+    <WCSLayers type="QStringList"/>
     <WFSUrl type="QString"></WFSUrl>
+    <WMSFees type="QString">conditions unknown</WMSFees>
+    <WMSPrecision type="QString">8</WMSPrecision>
+    <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
     <SpatialRefSys>
       <ProjectionsEnabled type="int">1</ProjectionsEnabled>
     </SpatialRefSys>
-    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
-    <WCSLayers type="QStringList"/>
-    <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
-    <WMSContactMail type="QString"></WMSContactMail>
-    <WMSKeywordList type="QStringList">
-      <value></value>
-    </WMSKeywordList>
+    <PAL>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <CandidatesLine type="int">50</CandidatesLine>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+      <SearchMethod type="int">0</SearchMethod>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+    </PAL>
+    <WMSUrl type="QString"></WMSUrl>
+    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+    <Measurement>
+      <AreaUnits type="QString">m2</AreaUnits>
+      <DistanceUnits type="QString">meters</DistanceUnits>
+    </Measurement>
+    <WFSTLayers>
+      <Update type="QStringList"/>
+      <Delete type="QStringList"/>
+      <Insert type="QStringList"/>
+    </WFSTLayers>
     <Legend>
       <filterByMap type="bool">false</filterByMap>
     </Legend>
     <Identify>
       <disabledLayers type="QStringList"/>
     </Identify>
-    <WFSLayers type="QStringList"/>
-    <Macros>
-      <pythonCode type="QString"></pythonCode>
-    </Macros>
+    <WMSContactPhone type="QString"></WMSContactPhone>
+    <WMSServiceTitle type="QString"></WMSServiceTitle>
+    <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
     <DefaultStyles>
       <Marker type="QString"></Marker>
       <RandomColors type="bool">true</RandomColors>
+      <ColorRamp type="QString"></ColorRamp>
       <Opacity type="double">1</Opacity>
       <Fill type="QString"></Fill>
       <Line type="QString"></Line>
-      <ColorRamp type="QString"></ColorRamp>
     </DefaultStyles>
-    <WMSContactPerson type="QString"></WMSContactPerson>
-    <WMSUrl type="QString"></WMSUrl>
-    <WMSContactOrganization type="QString"></WMSContactOrganization>
-    <PAL>
-      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
-      <ShowingCandidates type="bool">false</ShowingCandidates>
-      <ShowingAllLabels type="bool">false</ShowingAllLabels>
-      <CandidatesPoint type="int">16</CandidatesPoint>
-      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
-      <SearchMethod type="int">0</SearchMethod>
-      <CandidatesPolygon type="int">30</CandidatesPolygon>
-      <DrawRectOnly type="bool">false</DrawRectOnly>
-      <CandidatesLine type="int">50</CandidatesLine>
-    </PAL>
-    <Measurement>
-      <AreaUnits type="QString">m2</AreaUnits>
-      <DistanceUnits type="QString">meters</DistanceUnits>
-    </Measurement>
-    <WMSImageQuality type="int">90</WMSImageQuality>
-    <WMSContactPosition type="QString"></WMSContactPosition>
-    <WMSFees type="QString">conditions unknown</WMSFees>
-    <PositionPrecision>
-      <Automatic type="bool">true</Automatic>
-      <DegreeFormat type="QString">MU</DegreeFormat>
-      <DecimalPlaces type="int">2</DecimalPlaces>
-    </PositionPrecision>
-    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
-    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
+    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
     <Paths>
       <Absolute type="bool">false</Absolute>
     </Paths>
-    <WMSContactPhone type="QString"></WMSContactPhone>
     <WCSUrl type="QString"></WCSUrl>
-    <WFSTLayers>
-      <Delete type="QStringList"/>
-      <Insert type="QStringList"/>
-      <Update type="QStringList"/>
-    </WFSTLayers>
+    <WMSKeywordList type="QStringList">
+      <value></value>
+    </WMSKeywordList>
+    <Gui>
+      <CanvasColorBluePart type="int">255</CanvasColorBluePart>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
+      <CanvasColorRedPart type="int">255</CanvasColorRedPart>
+    </Gui>
+    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
   </properties>
   <visibility-presets/>
   <transformContext/>
