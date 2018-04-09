@@ -1,2 +1,9 @@
 Imgs/
 Data/
+Pdf/
+
+**/*.pdf
+**/*.PDF
+
+.DS_Store
+**/*.DS_Store
