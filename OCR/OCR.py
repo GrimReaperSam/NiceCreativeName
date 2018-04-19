@@ -49,7 +49,7 @@ def main():
         for file in files:
             if file.endswith(".pdf"):
                 file_name = os.path.splitext(file)[0]
-
+                print("[OCR processing] " + file_name)
                 res = service.files().create(
                     body={
                         'name': file,
