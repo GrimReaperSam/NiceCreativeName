@@ -4,7 +4,7 @@ import pandas as pd
 base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
 
 csv_dir = base_dir + 'Data/output.csv'
-img_dir = base_dir + 'Imgs/'
+img_dir = base_dir + 'GImgs3/'
 
 current_coord = None
 def createScreenshot(coords):
@@ -16,7 +16,8 @@ def createScreenshot(coords):
 		print(current_coord)
 		if not current_coord:
 			return;
-		qgis.utils.iface.mapCanvas().saveAsImage("%s%s.png" % (img_dir, current_coord[0]))
+		if current_coord[1] is not None:
+			qgis.utils.iface.mapCanvas().saveAsImage("%s%s.png" % (img_dir, current_coord[0]))
 		setNextFeatureExtent()
 
 
