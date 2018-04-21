@@ -36,5 +36,5 @@ for f in files:
 				count += 1
 		neighbors.append((layerName, count))
 
-with open('%s/neighbors.pkl' % base_dir, 'wb') as fp:
+with open('%s/Data/neighbors.pkl' % base_dir, 'wb') as fp:
     pickle.dump(neighbors, fp)

@@ -34,5 +34,5 @@ for f in files:
 			layerDistances.append(centroid.sqrDist(c))
 		distances.append((layerName, min(layerDistances)))
 
-with open('%s/distances.pkl' % base_dir, 'wb') as fp:
+with open('%s/Data/distances.pkl' % base_dir, 'wb') as fp:
     pickle.dump(distances, fp)

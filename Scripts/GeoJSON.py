@@ -16,7 +16,7 @@ def createScreenshot(files):
 		
 		p = Path(current_file)
 		layerName = p.stem
-		iface.mapCanvas().saveAsImage("%s/Layers/%s.png" % (base_dir, layerName))
+		iface.mapCanvas().saveAsImage("%s/Imgs/Layers/%s.png" % (base_dir, layerName))
 		
 		project = QgsProject.instance()
 		layers = project.mapLayersByName(layerName)
@@ -58,35 +58,3 @@ def createScreenshot(files):
 
 files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
 createScreenshot(files)
-
-
-
-# def addLayer(filename, layerName):
-	# vLayer = QgsVectorLayer(filename, layerName, "ogr")
-	# QgsProject.instance().addMapLayer(vLayer)
-	
-# def snapLayer(layerName):
-	# def snap():
-		# qgis.utils.iface.mapCanvas().saveAsImage("%s/Layers/%s.png" % (base_dir, layerName))
-		# iface.mapCanvas().mapCanvasRefreshed.disconnect(snap)
-
-	# vLayer = iface.activeLayer()
-	# vLayer.selectAll()
-	# iface.mapCanvas().zoomToSelected()
-	# vLayer.removeSelection()
-	
-	# iface.mapCanvas().mapCanvasRefreshed.connect(snap)
-	
-# def removeLayer():
-	# QgsProject.instance().removeMapLayer(iface.activeLayer())
-	# iface.mapCanvas().refresh()
-	
-	
-# files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
-
-# for filename in files:
-	# p = Path(filename)
-	# layerName = p.stem
-	# addLayer(str(p), layerName)
-	# snapLayer(layerName)
-	# removeLayer()
