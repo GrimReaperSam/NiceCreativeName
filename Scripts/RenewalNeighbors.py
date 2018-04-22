@@ -1,22 +1,8 @@
 import pickle
+import pandas as pd
+from Scripts.Utils import *
 
-def getLayerCenter(layer):
-	features = layer.getFeatures()
-	a = None
-	for f in features:
-		errors = f.geometry().validateGeometry()
-		if len(errors) == 0:
-			if a is None:
-				a = f.geometry()
-			else:
-				a = a.combine(f.geometry())
-	
-	return a.centroid().asPoint()
-
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
-
-csv_dir = base_dir + 'Data/output.csv'
-
+csv_dir = data_dir + 'output.csv'
 dataset = pd.read_csv(csv_dir)
 coords = [QgsPointXY(*x) for x in dataset[['Lng','Lat']].values]
 
@@ -36,5 +22,5 @@ for f in files:
 				count += 1
 		neighbors.append((layerName, count))
 
-with open('%s/Data/neighbors.pkl' % base_dir, 'wb') as fp:
+with open('%s/neighbors.pkl' % data_dir, 'wb') as fp:
     pickle.dump(neighbors, fp)

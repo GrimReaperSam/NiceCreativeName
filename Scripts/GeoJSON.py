@@ -1,9 +1,7 @@
 import glob
 import re
 from pathlib import Path
-
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
-
+from Scripts.Utils import *
 
 def createScreenshot(files):
 	global current_file

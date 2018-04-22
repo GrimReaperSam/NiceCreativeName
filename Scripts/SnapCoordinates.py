@@ -1,9 +1,8 @@
 import sys
 import pandas as pd
+from Scripts.Utils import *
 
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
-
-csv_dir = base_dir + 'Data/output.csv'
+csv_dir = data_dir + 'output.csv'
 img_dir = base_dir + 'GImgs3/'
 
 current_coord = None
