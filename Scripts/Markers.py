@@ -1,7 +1,7 @@
 import sys
 import pandas as pd
 
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
+base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
 
 csv_dir = base_dir + 'Data/output.csv'
 

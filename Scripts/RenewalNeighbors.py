@@ -13,7 +13,7 @@ def getLayerCenter(layer):
 	
 	return a.centroid().asPoint()
 
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
+base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
 
 csv_dir = base_dir + 'Data/output.csv'
 

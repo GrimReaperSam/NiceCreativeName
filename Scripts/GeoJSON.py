@@ -2,7 +2,7 @@ import glob
 import re
 from pathlib import Path
 
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
+base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/NiceCreativeName/'
 
 
 def createScreenshot(files):
@@ -16,7 +16,7 @@ def createScreenshot(files):
 		
 		p = Path(current_file)
 		layerName = p.stem
-		iface.mapCanvas().saveAsImage("%s/Imgs/Layers/%s.png" % (base_dir, layerName))
+		iface.mapCanvas().saveAsImage("%s/Imgs/LayersBG/%s.png" % (base_dir, layerName))
 		
 		project = QgsProject.instance()
 		layers = project.mapLayersByName(layerName)
@@ -41,7 +41,7 @@ def createScreenshot(files):
 				QgsProject.instance().addMapLayer(vLayer)
 				try:
 					symbols = vLayer.renderer().symbol()
-					symbols.setColor(QColor.fromRgb(50, 50, 250))
+					symbols.setColor(QColor.fromRgb(255, 255, 255, 0))
 				except:
 					print(layerName)
 				
