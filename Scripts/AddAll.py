@@ -1,6 +1,7 @@
 import glob
 import re
 from pathlib import Path
+from Scripts.Utils import *
 
 files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
 for f in files:

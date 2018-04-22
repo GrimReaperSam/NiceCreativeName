@@ -1,4 +1,6 @@
 import pickle
+import pandas as pd
+from Scripts.Utils import *
 
 def getLayerCenter(layer):
 	features = layer.getFeatures()
@@ -13,9 +15,7 @@ def getLayerCenter(layer):
 	
 	return a.centroid().asPoint()
 
-base_dir = 'C:/Users/Fayez Lahoud/Desktop/Academic/Courses/Personal Interaction Studio/Project/'
-
-csv_dir = base_dir + 'Data/output.csv'
+csv_dir = data_dir + 'output.csv'
 
 dataset = pd.read_csv(csv_dir)
 coords = [QgsPointXY(*x) for x in dataset[['Lng','Lat']].values]
@@ -34,5 +34,5 @@ for f in files:
 			layerDistances.append(centroid.sqrDist(c))
 		distances.append((layerName, min(layerDistances)))
 
-with open('%s/Data/distances.pkl' % base_dir, 'wb') as fp:
+with open('%s/distances.pkl' % data_dir, 'wb') as fp:
     pickle.dump(distances, fp)
