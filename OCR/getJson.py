@@ -3,13 +3,13 @@
 import os
 import requests
 
-for root, dirs, files in os.walk('LandNumber/done/'):
+for root, dirs, files in os.walk('LandNumber/'):
     for file in files:
-        if file.endswith("1029.csv"):
+        if file.endswith(".csv"):
 
             url = 'http://twland.ronny.tw/index/search?'
 
-            csv_file = open('LandNumber/done/' + file, 'r')
+            csv_file = open('LandNumber/' + file, 'r')
             print("[Dealing] " + file)
             for line in csv_file.readlines():
                 url += 'lands[]=臺北市,' + line.strip() + '&'
