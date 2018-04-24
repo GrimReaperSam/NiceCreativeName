@@ -18,38 +18,32 @@
   </projectCrs>
   <layer-tree-group>
     <customproperties/>
-    <layer-tree-layer providerKey="ogr" expanded="1" source="../../../../../Downloads/B0694.json" id="B0694_095efff7_c995_47d9_a01d_45b6047671fd" checked="Qt::Checked" name="B0694">
+    <layer-tree-layer checked="Qt::Checked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2013&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" providerKey="wms" id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" expanded="1" name="102年版航測影像">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer providerKey="wms" expanded="1" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2013&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" checked="Qt::Checked" name="102年版航測影像">
+    <layer-tree-layer checked="Qt::Unchecked" source=" crs='EPSG:3857' format='PNG32' layer='0' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2017/MapServer' table=&quot;&quot; sql=" providerKey="mapserver" id="WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b" expanded="1" name="WM">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer providerKey="mapserver" expanded="1" source=" crs='EPSG:3857' format='PNG32' layer='0' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2017/MapServer' table=&quot;&quot; sql=" id="WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b" checked="Qt::Unchecked" name="WM">
-      <customproperties/>
-    </layer-tree-layer>
-    <layer-tree-layer providerKey="wms" expanded="1" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2015&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" checked="Qt::Unchecked" name="104年版航測影像">
+    <layer-tree-layer checked="Qt::Unchecked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2015&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" providerKey="wms" id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" expanded="1" name="104年版航測影像">
       <customproperties/>
     </layer-tree-layer>
     <custom-order enabled="0">
       <item>104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8</item>
       <item>WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b</item>
       <item>102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d</item>
-      <item>B0694_095efff7_c995_47d9_a01d_45b6047671fd</item>
     </custom-order>
   </layer-tree-group>
-  <snapping-settings type="1" unit="1" mode="2" enabled="0" tolerance="12" intersection-snapping="0">
-    <individual-layer-settings>
-      <layer-setting type="1" units="1" id="B0694_095efff7_c995_47d9_a01d_45b6047671fd" enabled="0" tolerance="12"/>
-    </individual-layer-settings>
+  <snapping-settings intersection-snapping="0" mode="2" unit="1" enabled="0" tolerance="12" type="1">
+    <individual-layer-settings/>
   </snapping-settings>
   <relations/>
   <mapcanvas annotationsVisible="1" name="theMapCanvas">
     <units>degrees</units>
     <extent>
-      <xmin>121.51102714109980241</xmin>
-      <ymin>25.06243245081374127</ymin>
-      <xmax>121.52334151846925181</xmax>
-      <ymax>25.06848401182999808</ymax>
+      <xmin>121.54224234742798672</xmin>
+      <ymin>25.04312555660235162</ymin>
+      <xmax>121.54332863509199569</xmax>
+      <ymax>25.04380049473965286</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -67,24 +61,19 @@
     <rendermaptile>0</rendermaptile>
   </mapcanvas>
   <legend updateDrawingOrder="true">
-    <legendlayer open="true" drawingOrder="-1" checked="Qt::Checked" name="B0694" showFeatureCount="0">
+    <legendlayer checked="Qt::Checked" open="true" showFeatureCount="0" drawingOrder="-1" name="102年版航測影像">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" visible="1" layerid="B0694_095efff7_c995_47d9_a01d_45b6047671fd"/>
+        <legendlayerfile layerid="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" isInOverview="0" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer open="true" drawingOrder="-1" checked="Qt::Checked" name="102年版航測影像" showFeatureCount="0">
+    <legendlayer checked="Qt::Unchecked" open="true" showFeatureCount="0" drawingOrder="-1" name="WM">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" visible="1" layerid="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d"/>
+        <legendlayerfile layerid="WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer open="true" drawingOrder="-1" checked="Qt::Unchecked" name="WM" showFeatureCount="0">
+    <legendlayer checked="Qt::Unchecked" open="true" showFeatureCount="0" drawingOrder="-1" name="104年版航測影像">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" visible="0" layerid="WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b"/>
-      </filegroup>
-    </legendlayer>
-    <legendlayer open="true" drawingOrder="-1" checked="Qt::Unchecked" name="104年版航測影像" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" visible="0" layerid="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8"/>
+        <legendlayerfile layerid="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
   </legend>
@@ -160,7 +149,7 @@
     <rendermaptile>0</rendermaptile>
   </mapcanvas>
   <projectlayers>
-    <maplayer refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" type="raster" autoRefreshEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0">
+    <maplayer hasScaleBasedVisibilityFlag="0" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" autoRefreshEnabled="0" maxScale="0" autoRefreshTime="0" minScale="1e+8" type="raster">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -206,10 +195,30 @@
             <geographicflag>false</geographicflag>
           </spatialrefsys>
         </crs>
-        <extent/>
+        <extent>
+          <spatial crs="" maxz="0" maxy="0" dimensions="2" miny="0" maxx="0" minx="0" minz="0"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
         <links/>
       </resourceMetadata>
       <customproperties>
+        <property key="WMSBackgroundLayer" value="false"/>
+        <property key="WMSPublishDataSourceUrl" value="false"/>
+        <property key="embeddedWidgets/count" value="0"/>
         <property key="identify/format" value="Undefined"/>
       </customproperties>
       <provider>wms</provider>
@@ -220,7 +229,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer type="singlebandcolordata" band="1" alphaBand="-1" opacity="1">
+        <rasterrenderer alphaBand="-1" opacity="1" band="1" type="singlebandcolordata">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -231,13 +240,13 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation colorizeRed="255" colorizeOn="0" colorizeStrength="100" grayscaleMode="0" colorizeGreen="128" saturation="0" colorizeBlue="128"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="255" grayscaleMode="0" colorizeBlue="255" colorizeOn="1" colorizeStrength="100" colorizeRed="255" saturation="0"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
     </maplayer>
-    <maplayer refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" type="raster" autoRefreshEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0">
+    <maplayer hasScaleBasedVisibilityFlag="0" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" autoRefreshEnabled="0" maxScale="0" autoRefreshTime="0" minScale="1e+8" type="raster">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -297,7 +306,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer type="singlebandcolordata" band="1" alphaBand="-1" opacity="1">
+        <rasterrenderer alphaBand="-1" opacity="1" band="1" type="singlebandcolordata">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -308,376 +317,13 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation colorizeRed="255" colorizeOn="0" colorizeStrength="100" grayscaleMode="0" colorizeGreen="128" saturation="0" colorizeBlue="128"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" grayscaleMode="0" colorizeBlue="128" colorizeOn="0" colorizeStrength="100" colorizeRed="255" saturation="0"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
     </maplayer>
-    <maplayer refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" type="vector" geometry="Polygon" autoRefreshEnabled="0" simplifyDrawingTol="1" simplifyMaxScale="1" readOnly="0" simplifyDrawingHints="1" simplifyLocal="1" simplifyAlgorithm="0" minScale="1e+8" labelsEnabled="0" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0">
-      <extent>
-        <xmin>121.51789542263000499</xmin>
-        <ymin>25.06390250092900018</ymin>
-        <xmax>121.51811453697000331</xmax>
-        <ymax>25.06417948740299906</ymax>
-      </extent>
-      <id>B0694_095efff7_c995_47d9_a01d_45b6047671fd</id>
-      <datasource>../../../../../Downloads/B0694.json</datasource>
-      <keywordList>
-        <value></value>
-      </keywordList>
-      <layername>B0694</layername>
-      <srs>
-        <spatialrefsys>
-          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
-          <srsid>3452</srsid>
-          <srid>4326</srid>
-          <authid>EPSG:4326</authid>
-          <description>WGS 84</description>
-          <projectionacronym>longlat</projectionacronym>
-          <ellipsoidacronym>WGS84</ellipsoidacronym>
-          <geographicflag>true</geographicflag>
-        </spatialrefsys>
-      </srs>
-      <resourceMetadata>
-        <identifier></identifier>
-        <parentidentifier></parentidentifier>
-        <language></language>
-        <type></type>
-        <title></title>
-        <abstract></abstract>
-        <fees></fees>
-        <encoding></encoding>
-        <crs>
-          <spatialrefsys>
-            <proj4></proj4>
-            <srsid>0</srsid>
-            <srid>0</srid>
-            <authid></authid>
-            <description></description>
-            <projectionacronym></projectionacronym>
-            <ellipsoidacronym></ellipsoidacronym>
-            <geographicflag>false</geographicflag>
-          </spatialrefsys>
-        </crs>
-        <extent>
-          <spatial minz="0" crs="" minx="0" maxy="0" maxx="0" maxz="0" dimensions="2" miny="0"/>
-          <temporal>
-            <period>
-              <start></start>
-              <end></end>
-            </period>
-          </temporal>
-        </extent>
-        <contact>
-          <name></name>
-          <organization></organization>
-          <position></position>
-          <voice></voice>
-          <fax></fax>
-          <email></email>
-          <role></role>
-        </contact>
-        <links/>
-      </resourceMetadata>
-      <provider encoding="UTF-8">ogr</provider>
-      <vectorjoins/>
-      <layerDependencies/>
-      <dataDependencies/>
-      <expressionfields/>
-      <map-layer-style-manager current="default">
-        <map-layer-style name="default"/>
-      </map-layer-style-manager>
-      <auxiliaryLayer/>
-      <renderer-v2 type="singleSymbol" enableorderby="0" forceraster="0" symbollevels="0">
-        <symbols>
-          <symbol type="fill" clip_to_extent="1" alpha="1" name="0">
-            <layer locked="0" enabled="1" pass="0" class="SimpleFill">
-              <prop k="border_width_map_unit_scale" v="3x:0,0,0,0,0,0"/>
-              <prop k="color" v="202,182,0,96"/>
-              <prop k="joinstyle" v="bevel"/>
-              <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="3x:0,0,0,0,0,0"/>
-              <prop k="offset_unit" v="MM"/>
-              <prop k="outline_color" v="35,35,35,255"/>
-              <prop k="outline_style" v="solid"/>
-              <prop k="outline_width" v="0.26"/>
-              <prop k="outline_width_unit" v="MM"/>
-              <prop k="style" v="solid"/>
-              <data_defined_properties>
-                <Option type="Map">
-                  <Option type="QString" value="" name="name"/>
-                  <Option name="properties"/>
-                  <Option type="QString" value="collection" name="type"/>
-                </Option>
-              </data_defined_properties>
-            </layer>
-          </symbol>
-        </symbols>
-        <rotation/>
-        <sizescale/>
-      </renderer-v2>
-      <customproperties>
-        <property key="embeddedWidgets/count" value="0"/>
-        <property key="variableNames"/>
-        <property key="variableValues"/>
-      </customproperties>
-      <blendMode>0</blendMode>
-      <featureBlendMode>0</featureBlendMode>
-      <layerOpacity>1</layerOpacity>
-      <SingleCategoryDiagramRenderer diagramType="Histogram" attributeLegend="1">
-        <DiagramCategory backgroundColor="#ffffff" penWidth="0" height="15" labelPlacementMethod="XHeight" minScaleDenominator="0" minimumSize="0" backgroundAlpha="255" lineSizeScale="3x:0,0,0,0,0,0" maxScaleDenominator="1e+8" diagramOrientation="Up" enabled="0" scaleBasedVisibility="0" width="15" sizeType="MM" penAlpha="255" scaleDependency="Area" penColor="#000000" opacity="1" sizeScale="3x:0,0,0,0,0,0" lineSizeType="MM" barWidth="5" rotationOffset="270">
-          <fontProperties style="" description="MS Shell Dlg 2,7.8,-1,5,50,0,0,0,0,0"/>
-        </DiagramCategory>
-      </SingleCategoryDiagramRenderer>
-      <DiagramLayerSettings zIndex="0" obstacle="0" priority="0" dist="0" placement="0" linePlacementFlags="18" showAll="1">
-        <properties>
-          <Option type="Map">
-            <Option type="QString" value="" name="name"/>
-            <Option name="properties"/>
-            <Option type="QString" value="collection" name="type"/>
-          </Option>
-        </properties>
-      </DiagramLayerSettings>
-      <fieldConfiguration>
-        <field name="縣市">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="鄉鎮">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="段名">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="地號">
-          <editWidget type="Range">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="ymax">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="ymin">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="xmax">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="xmin">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="xcenter">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="ycenter">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="area_id">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="section_id">
-          <editWidget type="TextEdit">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-        <field name="land_id">
-          <editWidget type="Range">
-            <config>
-              <Option/>
-            </config>
-          </editWidget>
-        </field>
-      </fieldConfiguration>
-      <aliases>
-        <alias field="縣市" index="0" name=""/>
-        <alias field="鄉鎮" index="1" name=""/>
-        <alias field="段名" index="2" name=""/>
-        <alias field="地號" index="3" name=""/>
-        <alias field="ymax" index="4" name=""/>
-        <alias field="ymin" index="5" name=""/>
-        <alias field="xmax" index="6" name=""/>
-        <alias field="xmin" index="7" name=""/>
-        <alias field="xcenter" index="8" name=""/>
-        <alias field="ycenter" index="9" name=""/>
-        <alias field="area_id" index="10" name=""/>
-        <alias field="section_id" index="11" name=""/>
-        <alias field="land_id" index="12" name=""/>
-      </aliases>
-      <excludeAttributesWMS/>
-      <excludeAttributesWFS/>
-      <defaults>
-        <default field="縣市" expression="" applyOnUpdate="0"/>
-        <default field="鄉鎮" expression="" applyOnUpdate="0"/>
-        <default field="段名" expression="" applyOnUpdate="0"/>
-        <default field="地號" expression="" applyOnUpdate="0"/>
-        <default field="ymax" expression="" applyOnUpdate="0"/>
-        <default field="ymin" expression="" applyOnUpdate="0"/>
-        <default field="xmax" expression="" applyOnUpdate="0"/>
-        <default field="xmin" expression="" applyOnUpdate="0"/>
-        <default field="xcenter" expression="" applyOnUpdate="0"/>
-        <default field="ycenter" expression="" applyOnUpdate="0"/>
-        <default field="area_id" expression="" applyOnUpdate="0"/>
-        <default field="section_id" expression="" applyOnUpdate="0"/>
-        <default field="land_id" expression="" applyOnUpdate="0"/>
-      </defaults>
-      <constraints>
-        <constraint field="縣市" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="鄉鎮" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="段名" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="地號" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="ymax" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="ymin" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="xmax" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="xmin" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="xcenter" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="ycenter" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="area_id" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="section_id" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-        <constraint field="land_id" notnull_strength="0" unique_strength="0" exp_strength="0" constraints="0"/>
-      </constraints>
-      <constraintExpressions>
-        <constraint desc="" field="縣市" exp=""/>
-        <constraint desc="" field="鄉鎮" exp=""/>
-        <constraint desc="" field="段名" exp=""/>
-        <constraint desc="" field="地號" exp=""/>
-        <constraint desc="" field="ymax" exp=""/>
-        <constraint desc="" field="ymin" exp=""/>
-        <constraint desc="" field="xmax" exp=""/>
-        <constraint desc="" field="xmin" exp=""/>
-        <constraint desc="" field="xcenter" exp=""/>
-        <constraint desc="" field="ycenter" exp=""/>
-        <constraint desc="" field="area_id" exp=""/>
-        <constraint desc="" field="section_id" exp=""/>
-        <constraint desc="" field="land_id" exp=""/>
-      </constraintExpressions>
-      <attributeactions>
-        <defaultAction key="Canvas" value="{00000000-0000-0000-0000-000000000000}"/>
-      </attributeactions>
-      <attributetableconfig sortExpression="" actionWidgetStyle="dropDown" sortOrder="0">
-        <columns>
-          <column type="field" name="縣市" hidden="0" width="-1"/>
-          <column type="field" name="鄉鎮" hidden="0" width="-1"/>
-          <column type="field" name="段名" hidden="0" width="-1"/>
-          <column type="field" name="地號" hidden="0" width="-1"/>
-          <column type="field" name="ymax" hidden="0" width="-1"/>
-          <column type="field" name="ymin" hidden="0" width="-1"/>
-          <column type="field" name="xmax" hidden="0" width="-1"/>
-          <column type="field" name="xmin" hidden="0" width="-1"/>
-          <column type="field" name="xcenter" hidden="0" width="-1"/>
-          <column type="field" name="ycenter" hidden="0" width="-1"/>
-          <column type="field" name="area_id" hidden="0" width="-1"/>
-          <column type="field" name="section_id" hidden="0" width="-1"/>
-          <column type="field" name="land_id" hidden="0" width="-1"/>
-          <column type="actions" hidden="1" width="-1"/>
-        </columns>
-      </attributetableconfig>
-      <editform></editform>
-      <editforminit/>
-      <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
-      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
-"""
-QGIS forms can have a Python function that is called when the form is
-opened.
-
-Use this function to add extra logic to your forms.
-
-Enter the name of the function in the "Python Init function"
-field.
-An example follows:
-"""
-from qgis.PyQt.QtWidgets import QWidget
-
-def my_form_open(dialog, layer, feature):
-	geom = feature.geometry()
-	control = dialog.findChild(QWidget, "MyLineEdit")
-]]></editforminitcode>
-      <featformsuppress>0</featformsuppress>
-      <editorlayout>generatedlayout</editorlayout>
-      <editable>
-        <field editable="1" name="area_id"/>
-        <field editable="1" name="land_id"/>
-        <field editable="1" name="section_id"/>
-        <field editable="1" name="xcenter"/>
-        <field editable="1" name="xmax"/>
-        <field editable="1" name="xmin"/>
-        <field editable="1" name="ycenter"/>
-        <field editable="1" name="ymax"/>
-        <field editable="1" name="ymin"/>
-        <field editable="1" name="地號"/>
-        <field editable="1" name="段名"/>
-        <field editable="1" name="縣市"/>
-        <field editable="1" name="鄉鎮"/>
-      </editable>
-      <labelOnTop>
-        <field labelOnTop="0" name="area_id"/>
-        <field labelOnTop="0" name="land_id"/>
-        <field labelOnTop="0" name="section_id"/>
-        <field labelOnTop="0" name="xcenter"/>
-        <field labelOnTop="0" name="xmax"/>
-        <field labelOnTop="0" name="xmin"/>
-        <field labelOnTop="0" name="ycenter"/>
-        <field labelOnTop="0" name="ymax"/>
-        <field labelOnTop="0" name="ymin"/>
-        <field labelOnTop="0" name="地號"/>
-        <field labelOnTop="0" name="段名"/>
-        <field labelOnTop="0" name="縣市"/>
-        <field labelOnTop="0" name="鄉鎮"/>
-      </labelOnTop>
-      <widgets/>
-      <conditionalstyles>
-        <rowstyles/>
-        <fieldstyles/>
-      </conditionalstyles>
-      <expressionfields/>
-      <previewExpression>area_id</previewExpression>
-      <mapTip></mapTip>
-    </maplayer>
-    <maplayer refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" type="raster" autoRefreshEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0" autoRefreshTime="0" maxScale="0">
+    <maplayer hasScaleBasedVisibilityFlag="0" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" autoRefreshEnabled="0" maxScale="0" autoRefreshTime="0" minScale="1e+8" type="raster">
       <extent>
         <xmin>13520485.98503861203789711</xmin>
         <ymin>2870872.15687838662415743</ymin>
@@ -689,7 +335,7 @@ def my_form_open(dialog, layer, feature):
       <keywordList>
         <value></value>
       </keywordList>
-      <timestamp>2018-04-12T10:33:34</timestamp>
+      <timestamp>2018-04-23T17:31:16</timestamp>
       <layername>WM</layername>
       <srs>
         <spatialrefsys>
@@ -738,7 +384,7 @@ def my_form_open(dialog, layer, feature):
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer type="singlebandcolordata" band="1" alphaBand="-1" opacity="1">
+        <rasterrenderer alphaBand="-1" opacity="1" band="1" type="singlebandcolordata">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -749,8 +395,8 @@ def my_form_open(dialog, layer, feature):
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation colorizeRed="255" colorizeOn="0" colorizeStrength="100" grayscaleMode="0" colorizeGreen="128" saturation="0" colorizeBlue="128"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" grayscaleMode="0" colorizeBlue="128" colorizeOn="0" colorizeStrength="100" colorizeRed="255" saturation="0"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
@@ -760,94 +406,93 @@ def my_form_open(dialog, layer, feature):
     <layer id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8"/>
     <layer id="WM_97a1a3af_7b72_4414_984c_b9dd9d29c81b"/>
     <layer id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d"/>
-    <layer id="B0694_095efff7_c995_47d9_a01d_45b6047671fd"/>
   </layerorder>
   <properties>
+    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+    <WCSUrl type="QString"></WCSUrl>
+    <Gui>
+      <CanvasColorGreenPart type="int">0</CanvasColorGreenPart>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <CanvasColorBluePart type="int">0</CanvasColorBluePart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+      <CanvasColorRedPart type="int">0</CanvasColorRedPart>
+    </Gui>
+    <DefaultStyles>
+      <Line type="QString"></Line>
+      <Opacity type="double">1</Opacity>
+      <Marker type="QString"></Marker>
+      <Fill type="QString"></Fill>
+      <RandomColors type="bool">true</RandomColors>
+      <ColorRamp type="QString"></ColorRamp>
+    </DefaultStyles>
+    <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
+    <WFSUrl type="QString"></WFSUrl>
+    <WMSContactMail type="QString"></WMSContactMail>
+    <PAL>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <SearchMethod type="int">0</SearchMethod>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <CandidatesLine type="int">50</CandidatesLine>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+    </PAL>
+    <WMSContactOrganization type="QString"></WMSContactOrganization>
+    <WMSPrecision type="QString">8</WMSPrecision>
+    <Paths>
+      <Absolute type="bool">false</Absolute>
+    </Paths>
+    <WMSContactPosition type="QString"></WMSContactPosition>
+    <Legend>
+      <filterByMap type="bool">false</filterByMap>
+    </Legend>
     <WMSOnlineResource type="QString"></WMSOnlineResource>
-    <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
+    <Identify>
+      <disabledLayers type="QStringList"/>
+    </Identify>
+    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+    <Macros>
+      <pythonCode type="QString"></pythonCode>
+    </Macros>
+    <WFSLayers type="QStringList"/>
+    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+    <WFSTLayers>
+      <Update type="QStringList"/>
+      <Delete type="QStringList"/>
+      <Insert type="QStringList"/>
+    </WFSTLayers>
     <WMSKeywordList type="QStringList">
       <value></value>
     </WMSKeywordList>
-    <Gui>
-      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
-      <CanvasColorBluePart type="int">255</CanvasColorBluePart>
-      <CanvasColorGreenPart type="int">255</CanvasColorGreenPart>
-      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
-      <CanvasColorRedPart type="int">255</CanvasColorRedPart>
-      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
-      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
-    </Gui>
-    <WMSPrecision type="QString">8</WMSPrecision>
-    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
-    <WMSUrl type="QString"></WMSUrl>
-    <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
-    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
     <Measure>
       <Ellipsoid type="QString">WGS84</Ellipsoid>
     </Measure>
+    <WMSFees type="QString">conditions unknown</WMSFees>
+    <SpatialRefSys>
+      <ProjectionsEnabled type="int">1</ProjectionsEnabled>
+    </SpatialRefSys>
+    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
+    <WCSLayers type="QStringList"/>
+    <WMSUrl type="QString"></WMSUrl>
+    <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
+    <WMSImageQuality type="int">90</WMSImageQuality>
     <WMSServiceTitle type="QString"></WMSServiceTitle>
     <WMSContactPhone type="QString"></WMSContactPhone>
-    <WFSUrl type="QString"></WFSUrl>
-    <WFSLayers type="QStringList"/>
+    <WMSContactPerson type="QString"></WMSContactPerson>
     <Measurement>
       <DistanceUnits type="QString">meters</DistanceUnits>
       <AreaUnits type="QString">m2</AreaUnits>
     </Measurement>
-    <Paths>
-      <Absolute type="bool">false</Absolute>
-    </Paths>
-    <WMSImageQuality type="int">90</WMSImageQuality>
-    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
-    <WMSContactOrganization type="QString"></WMSContactOrganization>
-    <SpatialRefSys>
-      <ProjectionsEnabled type="int">1</ProjectionsEnabled>
-    </SpatialRefSys>
-    <WMSContactMail type="QString"></WMSContactMail>
-    <WMSFees type="QString">conditions unknown</WMSFees>
-    <Macros>
-      <pythonCode type="QString"></pythonCode>
-    </Macros>
-    <PAL>
-      <ShowingCandidates type="bool">false</ShowingCandidates>
-      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
-      <SearchMethod type="int">0</SearchMethod>
-      <DrawRectOnly type="bool">false</DrawRectOnly>
-      <CandidatesLine type="int">50</CandidatesLine>
-      <CandidatesPoint type="int">16</CandidatesPoint>
-      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
-      <ShowingAllLabels type="bool">false</ShowingAllLabels>
-      <CandidatesPolygon type="int">30</CandidatesPolygon>
-    </PAL>
-    <WCSUrl type="QString"></WCSUrl>
-    <WFSTLayers>
-      <Insert type="QStringList"/>
-      <Delete type="QStringList"/>
-      <Update type="QStringList"/>
-    </WFSTLayers>
-    <WMSServiceAbstract type="QString"></WMSServiceAbstract>
-    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
     <PositionPrecision>
+      <DegreeFormat type="QString">MU</DegreeFormat>
       <Automatic type="bool">true</Automatic>
       <DecimalPlaces type="int">2</DecimalPlaces>
-      <DegreeFormat type="QString">MU</DegreeFormat>
     </PositionPrecision>
-    <WMSContactPosition type="QString"></WMSContactPosition>
-    <WCSLayers type="QStringList"/>
-    <WMSContactPerson type="QString"></WMSContactPerson>
-    <DefaultStyles>
-      <Fill type="QString"></Fill>
-      <ColorRamp type="QString"></ColorRamp>
-      <Marker type="QString"></Marker>
-      <Opacity type="double">1</Opacity>
-      <RandomColors type="bool">true</RandomColors>
-      <Line type="QString"></Line>
-    </DefaultStyles>
-    <Legend>
-      <filterByMap type="bool">false</filterByMap>
-    </Legend>
-    <Identify>
-      <disabledLayers type="QStringList"/>
-    </Identify>
   </properties>
   <visibility-presets/>
   <transformContext/>

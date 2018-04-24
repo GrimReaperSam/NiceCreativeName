@@ -39,7 +39,7 @@ def createScreenshot(files):
 				QgsProject.instance().addMapLayer(vLayer)
 				try:
 					symbols = vLayer.renderer().symbol()
-					symbols.setColor(QColor.fromRgb(255, 255, 255, 0))
+					symbols.setColor(QColor.fromRgb(255, 255, 255, 128))
 				except:
 					print(layerName)
 				

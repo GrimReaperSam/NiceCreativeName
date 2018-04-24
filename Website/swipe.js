@@ -40,13 +40,13 @@ require([
     csv.setRenderer(renderer);
     // var template = new InfoTemplate("${type}", "${place}");
     // csv.setInfoTemplate(template);
-    mapL.addLayer(csv);
+    // mapL.addLayer(csv);
     csv2 = new CSVLayer("../Data/output.csv");
     var orangeRed = new Color([0, 69, 238, 0.25]); // hex is #ff4500
     var marker = new SimpleMarkerSymbol("solid", 15, null, orangeRed);
     var renderer = new SimpleRenderer(marker);
     csv2.setRenderer(renderer);
-    mapR.addLayer(csv2);
+    // mapR.addLayer(csv2);
 
     mapL.on("extent-change", function () {
       if (!tagZoomExtent) {
@@ -55,7 +55,7 @@ require([
           var ymin = mapL.extent.ymin;
           var ymax = mapL.extent.ymax;
           var sr = mapL.extent.spatialReference;
-          mapR.setExtent(new esri.geometry.Extent(xmin, ymin, xmax, ymax, sr));
+          mapR.setExtent(new esri.geometry.Extent(xmin, ymin, xmin + (xmax - xmin) * 2, ymax, sr));
       }
       tagZoomExtent = !tagZoomExtent;
   });
@@ -67,7 +67,7 @@ require([
           var ymin = mapR.extent.ymin;
           var ymax = mapR.extent.ymax;
           var sr = mapR.extent.spatialReference;
-          mapL.setExtent(new esri.geometry.Extent(xmin, ymin, xmax, ymax, sr));
+          mapL.setExtent(new esri.geometry.Extent(xmin, ymin, xmin + (xmax - xmin) * 2, ymax, sr));
       }
       tagZoomExtent = !tagZoomExtent;
   });
@@ -77,7 +77,7 @@ require([
 var featureLayer = new GeoJsonLayer({
     url: "../B0694.json"
 })
-mapL.addLayer(featureLayer);
+// mapL.addLayer(featureLayer);
 
 mapL.on("load", function(theMap) {
     layerSwipe = new LayerSwipe({
