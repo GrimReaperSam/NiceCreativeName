@@ -7,9 +7,9 @@ dataset = pd.read_csv(csv_dir)
 coords = [QgsPointXY(*x) for x in dataset[['Lng','Lat']].values]
 
 files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
-neighbors = []
+df = pd.DataFrame(columns=('district', 'rooftopsNearby', 'closestRooftop', 'featuresCount'))
 threshold = 1.2173805738107589e-05
-for f in files:
+for idx, f in enumerate(files):
 	p = Path(f)
 	layerName = p.stem
 	vLayer = QgsVectorLayer(str(p), layerName, "ogr")
@@ -17,10 +17,11 @@ for f in files:
 		centroid = getLayerCenter(vLayer)
 		centroid = QgsPointXY(*centroid)
 		count = 0
+		layerDistances = []
 		for c in coords:
+			layerDistances.append(centroid.sqrDist(c))
 			if centroid.sqrDist(c) < threshold:
 				count += 1
-		neighbors.append((layerName, count))
+		df.loc[idx] = [layerName, count, min(layerDistances), vLayer.featureCount()]
 
-with open('%s/neighbors.pkl' % data_dir, 'wb') as fp:
-    pickle.dump(neighbors, fp)
+df.to_csv('%sRenewals.csv' % data_dir, index=False, encoding='utf-8')

@@ -2,18 +2,6 @@ import pickle
 import pandas as pd
 from Scripts.Utils import *
 
-def getLayerCenter(layer):
-	features = layer.getFeatures()
-	a = None
-	for f in features:
-		errors = f.geometry().validateGeometry()
-		if len(errors) == 0:
-			if a is None:
-				a = f.geometry()
-			else:
-				a = a.combine(f.geometry())
-	
-	return a.centroid().asPoint()
 
 csv_dir = data_dir + 'output.csv'
 
