@@ -5,7 +5,7 @@ import requests
 
 for root, dirs, files in os.walk('LandNumber/'):
     for file in files:
-        if file.endswith(".csv"):
+        if file.endswith("0949.csv"):
 
             url = 'http://twland.ronny.tw/index/search?'
 
