@@ -21,3 +21,7 @@ for idx, a in enumerate(Renewals_dataset['district']):
 	
 Renewals_dataset = pd.merge(Renewals_dataset, values_df, on=('district'))
 Renewals_dataset.to_csv('%sRenewals-Prices.csv' % data_dir, index=False, encoding='utf-8')
+
+
+
+#DATONG: 657, 688, 786, 842, 949, 

@@ -1,5 +1,6 @@
 import pickle
 import pandas as pd
+import glob
 from Scripts.Utils import *
 
 csv_dir = data_dir + 'output.csv'
@@ -8,7 +9,14 @@ coords = [QgsPointXY(*x) for x in dataset[['Lng','Lat']].values]
 
 files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
 df = pd.DataFrame(columns=('district', 'rooftopsNearby', 'closestRooftop', 'featuresCount', 'area'))
-threshold = 1.2173805738107589e-05
+threshold = 300
+#Create a measure object
+distance = QgsDistanceArea()
+# crs = QgsCoordinateReferenceSystem()
+# crs.createFromSrsId(3857)
+# distance.setSourceCrs(crs)
+#distance.setEllipsoidalMode(True)
+distance.setEllipsoid('WGS84')
 for idx, f in enumerate(files):
 	p = Path(f)
 	layerName = p.stem
@@ -17,7 +25,7 @@ for idx, f in enumerate(files):
 		# getting area data
 		area = 0
 		for f in vLayer.getFeatures():
-			area += f.geometry().area()
+			area += distance.measureArea(f.geometry())
 		
 		# getting rooftop data
 		centroid = getLayerCenter(vLayer)
@@ -25,8 +33,9 @@ for idx, f in enumerate(files):
 		count = 0
 		layerDistances = []
 		for c in coords:
-			layerDistances.append(centroid.sqrDist(c))
-			if centroid.sqrDist(c) < threshold:
+			m = distance.measureLine(centroid, c)
+			layerDistances.append(m)
+			if m < threshold:
 				count += 1
 		df.loc[idx] = [layerName, count, min(layerDistances), vLayer.featureCount(), area]
 

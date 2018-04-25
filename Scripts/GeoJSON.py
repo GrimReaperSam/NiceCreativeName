@@ -1,6 +1,7 @@
 import glob
 import re
 from pathlib import Path
+import pandas as pd
 from Scripts.Utils import *
 
 def createScreenshot(files):
@@ -14,7 +15,7 @@ def createScreenshot(files):
 		
 		p = Path(current_file)
 		layerName = p.stem
-		iface.mapCanvas().saveAsImage("%s/Imgs/LayersBG/%s.png" % (base_dir, layerName))
+		iface.mapCanvas().saveAsImage("%s/Imgs/LayersMap/%s.png" % (base_dir, layerName))
 		
 		project = QgsProject.instance()
 		layers = project.mapLayersByName(layerName)
@@ -26,11 +27,14 @@ def createScreenshot(files):
 
 	def setNextFeatureExtent():
 		global current_file
-		current_file = next(file_iter, None)
-		if current_file is None:
+		item = next(file_iter, None)
+		if item is None:
 			iface.mapCanvas().mapCanvasRefreshed.disconnect(snapLayer)
 			print('Finished')
-		else:
+		else:			
+			current_file = '%s/OCR/GeoJson/%s.json' % (base_dir,  item[0])
+			rooftops_nearby = item[1]
+		
 			p = Path(current_file)
 			layerName = p.stem
 			
@@ -39,12 +43,13 @@ def createScreenshot(files):
 				QgsProject.instance().addMapLayer(vLayer)
 				try:
 					symbols = vLayer.renderer().symbol()
-					symbols.setColor(QColor.fromRgb(255, 255, 255, 128))
+					symbols.setColor(QColor.fromRgb(64 + int(191 * rooftops_nearby / 8.0), 0, 0, 0))
 				except:
 					print(layerName)
 				
 				vLayer.selectAll()
 				iface.mapCanvas().zoomToSelected()
+				iface.mapCanvas().zoomByFactor(1.5)
 				vLayer.removeSelection()
 				iface.mapCanvas().refreshAllLayers()
 			else:
@@ -54,5 +59,8 @@ def createScreenshot(files):
 	setNextFeatureExtent()
 
 
-files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
-createScreenshot(files)
+# files = glob.glob('%s/OCR/GeoJson/*.json' % base_dir)
+Renewals_dataset = pd.read_csv('%sRenewals.csv' % data_dir)
+rooftops = Renewals_dataset['rooftopsNearby'].as_matrix()
+names = Renewals_dataset['district'].as_matrix()
+createScreenshot(zip(names, rooftops))
