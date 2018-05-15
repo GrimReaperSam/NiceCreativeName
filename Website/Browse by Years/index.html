@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Browse by Years</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="http://piotrkrosniak.github.io/simple-slider.js"></script>
+  <link href="http://piotrkrosniak.github.io/simple-slider.css" rel="stylesheet" type="text/css" />
+  <link href="http://piotrkrosniak.github.io/simple-slider-volume.css" rel="stylesheet" type="text/css" />
+  <script src="https://js.arcgis.com/3.23/"></script>
+  <script src="terraformer.min.js"></script>
+  <script src="terraformer-arcgis-parser.js"></script>
+  <script src="year-map.js"></script>
+  <link href="http://piotrkrosniak.github.io/default.css" rel="stylesheet" type="text/css" media="all" />
+  <link href="http://piotrkrosniak.github.io/fonts.css" rel="stylesheet" type="text/css" media="all" />
+  <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+</head>
+
+
+<!--body onload="init()"-->
+<body>
+  <div id="header-wrapper">
+    <div id="header" class="container">
+      <div id="logo">
+        <h1>
+          Browse by Years
+        </h1>
+      </div>
+      <div id="menu">
+      </div>
+    </div>
+    <div id="map" class="container" style="width: 1200px; height: 400px;"></div>
+    </br>
+    <div id="slider" class="container">
+      <h3>Year</h3>
+      <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" data-slider-highlight="true" data-slider-snap="true" type="text"
+      />
+    </div>
+    <script>
+      $("[data-slider]")
+        .each(function () {
+          var input = $(this);
+          $("<span>")
+            .addClass("output")
+            .insertAfter($(this));
+        })
+        .bind("slider:ready slider:changed", function (event, data) {
+          $(this)
+            .nextAll(".output:first")
+            .html(data.value.toFixed(0));
+          tableidselections = data.value.toFixed(0);
+          changeLayer(tableidselections);
+        });
+    </script>
+  </div>
+</body>
+
+</html>
