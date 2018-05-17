@@ -1,5 +1,4 @@
-
-var map, layer2011, layer2012, layer2013, layer2015, layer2017;
+var map, layer2011, layer2012, layer2013, layer2015, layer2017, layerSwipe;
 
 require([
   "esri/map",
@@ -39,9 +38,10 @@ require([
   });
 
   map = new Map("map", {
-    nav: false,
+    nav: true,
     extent: ext,
-    logo: false
+    logo: false,
+    zoom: 18
   });
 
   layer2017 = new ArcGISTiledMapServiceLayer(
@@ -59,34 +59,41 @@ require([
   layer2011 = new ArcGISTiledMapServiceLayer(
     "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2011/MapServer"
   );
-  map.addLayers([layer2011]);
+
+  map.addLayers([layer2017, layer2011]);
+  //layerCurrent = layer2017;
+
+  map.on("load", function(theMap) {
+    layerSwipe = new LayerSwipe(
+      {
+        type: "vertical",
+        map: map,
+        layers: [layer2011]
+      },
+      "swipeDiv"
+    );
+    layerSwipe.startup();
+  });
+
 });
 
-
 function changeLayer(tableidselections) {
+  console.log("YEAR=" + tableidselections);
+  map.removeAllLayers();
 
-    console.log("YEAR="+tableidselections);
-    
-    map.removeAllLayers();
-
-    if (tableidselections == 2011) {
-        map.addLayers([layer2011]);
-    }
-    if (tableidselections == 2012) {
-        map.addLayers([layer2012]);
-    }
-    if (tableidselections == 2013) {
-        map.addLayers([layer2013]);
-    }
-    if (tableidselections == 2015) {
-        map.addLayers([layer2015]);
-    }
-    if (tableidselections == 2017) {
-        map.addLayers([layer2017]);
-    }
-    
-  //if (tableidselections == 1950) {
-    //map.removeAllLayers();
-    //map.addLayers([layer1]);
-  //}
+  if (tableidselections == 2011) {
+    map.addLayers([layer2011]);
+  }
+  if (tableidselections == 2012) {
+    map.addLayers([layer2012]);
+  }
+  if (tableidselections == 2013) {
+    map.addLayers([layer2013]);
+  }
+  if (tableidselections == 2015) {
+    map.addLayers([layer2015]);
+  }
+  if (tableidselections == 2017) {
+    map.addLayers([layer2017]);
+  }
 }
