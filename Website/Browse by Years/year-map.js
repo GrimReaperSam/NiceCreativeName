@@ -1,4 +1,9 @@
-var map, layer2011, layer2012, layer2013, layer2015, layer2017, layerSwipe;
+var map;
+var layersLeft = {};
+var layersRight = {};
+var years = [2011, 2012, 2013, 2015, 2017];
+var layerL, layerR;
+var swipe;
 
 require([
   "esri/map",
@@ -44,56 +49,25 @@ require([
     zoom: 18
   });
 
-  layer2017 = new ArcGISTiledMapServiceLayer(
-    "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2017/MapServer"
-  );
-  layer2015 = new ArcGISTiledMapServiceLayer(
-    "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2015/MapServer"
-  );
-  layer2013 = new ArcGISTiledMapServiceLayer(
-    "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2013/MapServer"
-  );
-  layer2012 = new ArcGISTiledMapServiceLayer(
-    "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2012/MapServer"
-  );
-  layer2011 = new ArcGISTiledMapServiceLayer(
-    "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2011/MapServer"
-  );
+  years.forEach (function(year) {
+    mapServer = "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_" + year + "/MapServer";
+    layersLeft[year] = new ArcGISTiledMapServiceLayer(mapServer);
+    layersRight[year] = new ArcGISTiledMapServiceLayer(mapServer);
+  });
 
-  map.addLayers([layer2017, layer2011]);
-  //layerCurrent = layer2017;
-
+  layerL = layersLeft[2011];
+  layerR = layersRight[2017];
+  map.addLayers([layerR, layerL]);
   map.on("load", function(theMap) {
-    layerSwipe = new LayerSwipe(
+    swipe = new LayerSwipe(
       {
         type: "vertical",
         map: map,
-        layers: [layer2011]
+        layers: [layerL]
       },
       "swipeDiv"
     );
-    layerSwipe.startup();
+    swipe.startup();
   });
 
 });
-
-function changeLayer(tableidselections) {
-  console.log("YEAR=" + tableidselections);
-  map.removeAllLayers();
-
-  if (tableidselections == 2011) {
-    map.addLayers([layer2011]);
-  }
-  if (tableidselections == 2012) {
-    map.addLayers([layer2012]);
-  }
-  if (tableidselections == 2013) {
-    map.addLayers([layer2013]);
-  }
-  if (tableidselections == 2015) {
-    map.addLayers([layer2015]);
-  }
-  if (tableidselections == 2017) {
-    map.addLayers([layer2017]);
-  }
-}

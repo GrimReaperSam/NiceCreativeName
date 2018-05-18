@@ -19,84 +19,71 @@
   <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 </head>
 
-
-<!--body onload="init()"-->
-
 <body>
   <div id="header-wrapper">
     <div id="header" class="container">
       <div id="logo">
-        <h1>
+        <h2>
           Browse by Years
-        </h1>
+        </h2>
       </div>
       <div id="menu">
       </div>
     </div>
+    <br/>
     <div id="map" class="map" style="width: 1200px; height: 400px; margin: 0px auto; position: relative;">
       <div id="swipeDiv"></div>
     </div>
-    <!-- <div id="slider" class="container">
-      <h4>
-        <div id="leftyear">2011 on the left</div>
-      </h4>
-      <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" data-slider-highlight="true" data-slider-snap="true"
-        type="text">
-    </div> -->
-    <div name="left-slider" class="container">
-        <h4><div id="left-year">2011 on the left</div></h4>
-      <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" data-slider-highlight="true" data-slider-snap="true"
-        type="text">
-    </div>
-    <div name="right-slider" class="container">
-        <h4><div id="right-year">2017 on the right</div></h4>
-      <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" value="2017" data-slider-highlight="true" data-slider-snap="true"
-        type="text">
-    </div>
+    <table>
+      <tr>
+        <td>
+          <div name="left-slider" style="padding: 20px; position: relative;">
+            <h4>
+              <div id="left-year">Left: 2011</div>
+            </h4>
+            <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" data-slider-highlight="true" data-slider-snap="true"
+              type="text">
+          </div>
+        </td>
+        <td>
+          <div name="right-slider">
+            <h4>
+              <div id="right-year">Right: 2017</div>
+            </h4>
+            <input data-slider="true" data-slider-values="2011,2012,2013,2015,2017" value="2017" data-slider-highlight="true" data-slider-snap="true"
+              type="text">
+          </div>
+        </td>
+      </tr>
+    </table>
     <script>
       $("[data-slider]")
         .each(function () {
           var input = $(this);
         })
-        .bind("slider:ready slider:changed", function (event, data) {
+        .bind("slider:changed", function (event, data) {
           year = data.value.toFixed(0);
-            if ($(this).parent().attr("name").includes("left")) {
-              $("#left-year").html(year + " on the left");
-            }
-            else {
-              $("#right-year").html(year + " on the right");
-            }
+          if ($(this).parent().attr("name").includes("left")) {
+            $("#left-year").html("Left: " + year);
+            changeLayer(year, true);
+          }
+          else {
+            $("#right-year").html("Right: " + year);
+            changeLayer(year, false);
+          }
         });
 
+      function changeLayer(year, isLeft) {
+        if (isLeft)
+          layerL = layersLeft[year];
+        else
+          layerR = layersRight[year];
 
-      // $("[data-slider]")
-      //   .each(function () {
-      //   })
-      //   .bind("slider:changed", function (event, data) {
-      //     tableidselections = data.value.toFixed(0);
-      //     //console.log("THIS " + $(this).parent().data("name"));
-      //     //$(this).prevAll(".container:first").data("name");
-      //     console.log("THIS " + $(this).prevAll("div").data("id"));
-      //     $(this).css({ color: "red" });
-      //     if ($(this).parent().data("name").includes("left")) {
-      //       $("#left-year").text(tableidselections);
-      //       changeLayer(tableidselections);
-      //     }
-      //     else {
-      //       $("#right-year").text(tableidselections);
-      //     }
-      //   });
-
-
-      // $("#slider")
-      //   .bind("slider:ready slider:changed", function (event, data) {
-      //     $(this)
-      //       .nextAll(".output:first")
-      //       .html(data.value.toFixed(0));
-      //     tableidselections = data.value.toFixed(0);
-      //     changeLayer(tableidselections);
-      //     $("#leftyear").text(tableidselections);
-      //   });
+        map.removeAllLayers();
+        map.addLayers([layerR, layerL]);
+        swipe.layers = [layerL];
+        //swipe.startup();
+      }
     </script>
   </div>
 </body>
