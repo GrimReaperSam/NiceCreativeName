@@ -1,10 +1,10 @@
 var lMap, rMap;
-// var layersLeft = {};
-// var layersRight = {};
+var lYear, rYear;
+// var lYearLayers = {}, rYearLayers = {};
+//var layers = {};
 var yearLayers = {};
 var years = [2011, 2012, 2013, 2015, 2017];
-// var layerL, layerR;
-// var swipe;
+var rooftop;
 
 require([
   "esri/map",
@@ -18,6 +18,7 @@ require([
   "dojo/_base/array",
   "esri/geometry/Point",
   "esri/graphic",
+  "js/geojsonlayer.js",
   "dojo/domReady!"
 ], function(
   Map,
@@ -63,6 +64,8 @@ require([
       year +
       "/MapServer";
     yearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
+    // layers["L"][year]["base"] = new ArcGISTiledMapServiceLayer(mapServer);
+    // layers["R"][year]["base"] = new ArcGISTiledMapServiceLayer(mapServer);
   });
 
   lMap.addLayers([yearLayers[2011]]);
@@ -82,23 +85,57 @@ require([
     prettify_enabled: false,
     min_interval: 1,
     onFinish: function(data) {
-      //console.log(data.from_value);
-      changeYear(data.from_value, data.to_value)
+      lYear = data.from_value;
+      rYear = data.to_value;
+      changeYear(lYear, rYear);
     }
   });
 
   function changeYear(from, to) {
     lMap.removeAllLayers();
+    lMap.addLayer(yearLayers[from]);
+    rMap.removeAllLayers();
+    rMap.addLayer(yearLayers[to]);
+  }
+
+  // $(document).ready(function() {
+  //   $('input').iCheck({
+  //     checkboxClass: 'icheckbox_flat-grey',
+  //     radioClass: 'iradio_flat-grey'
+  //   });
+
+  //   $('input').on('ifChecked', function(event){
+  //     alert("id = " + $(this).val());
+  //   });
+  // });
+
+  rooftop = new CSVLayer("./Output.csv");
+  var orangeRed = new Color([238, 69, 0, 0.5]); // hex is #ff4500
+  var marker = new SimpleMarkerSymbol("solid", 15, null, orangeRed);
+  var renderer = new SimpleRenderer(marker);
+  rooftop.setRenderer(renderer);
+  lMap.addLayer(rooftop);
+  //rMap.addLayer(rooftop);
+  rooftop.show();
+  // rooftop.hide();
+
+  $("#l-renew").iCheck({
+    checkboxClass: "icheckbox_flat-grey",
+    radioClass: "iradio_flat-grey"
+  });
+
+  $("#l-renew").on("ifChecked", function(event) {
+    rooftop.show();
+  });
+
+  $("#l-renew").on("ifUnchecked", function(event) {
+    rooftop.hide();
+  });
+
+  function dataLayerHandler(isLeft, isRenew, isChecked) {
+    lMap.removeAllLayers();
     lMap.addLayers([yearLayers[from]]);
     rMap.removeAllLayers();
     rMap.addLayers([yearLayers[to]]);
   }
-
-  $(document).ready(function(){
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-grey',
-      radioClass: 'iradio_square-grey'
-    });
-  });
-
 });
