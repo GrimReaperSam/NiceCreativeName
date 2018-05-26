@@ -1,0 +1,38 @@
+.row {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    /* border: 3px solid black; */
+    width: 90%;
+    height: 50%;
+    /* margin-left: -200px;*/
+    /* margin-top: 10%;  */
+}
+
+.column {
+    float: left;
+    /* background: green; */
+}
+
+.left, .right {
+    width: 34%;
+    height: 100%;
+    /* background: red; */
+    /* border: 3px solid black; */
+}
+
+.middle {
+    padding: 0% 2%;
+    /* top: 20%; */
+    width: 28%;
+    height: 90%;
+    /* background: gray; */
+}
+
+.icons {
+    padding: 5% 2%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32px;
+}
