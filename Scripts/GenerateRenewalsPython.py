@@ -89,6 +89,11 @@ df['ndvi 2016'] = 0.5 * (df['ndvi 2015'] + df['ndvi 2017'])
 df['greeniness 2016'] = 0.5 * (df['greeniness 2015'] + df['greeniness 2017'])
 df['dmap 2016'] = 0.5 * (df['dmap 2015'] + df['dmap 2017'])
 
+# ADDING YEAR INFO
+year_df = pd.read_csv('%sOCR/years.csv' % base_dir, encoding='utf-8', header=None, names=['district', 'date'])
+df = pd.merge(df, year_df, on=('district'))
+df['year'] = df['date'].apply(lambda x: x[:3])
+df['e-year'] = df['year'].apply(lambda x: int(x) + 1911)
 
 # SAVING
 df.to_csv('Final.csv', index=False, encoding='utf-8')

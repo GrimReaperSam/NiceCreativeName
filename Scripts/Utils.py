@@ -24,7 +24,7 @@ def getLayerCenter(layer):
 	return a.centroid().asPoint()
 	
 def LandNumSplit(landNumber):
-	a, b = int(landNumber[:4]), int(landNumber[4:])
+	a, b = int(landNumber[:-4]), int(landNumber[4:])
 	if b == 0:
 		return str(a)
 	else:
