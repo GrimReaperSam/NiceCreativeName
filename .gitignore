@@ -8,3 +8,14 @@ Pdf/
 **/*.DS_Store
 
 **/__pycache__
+IPython/*.png
+IPython/*.jpg
+
+
+Latex Stuff/*.aux
+Latex Stuff/*.bbl
+Latex Stuff/*.blg
+Latex Stuff/*.log
+Latex Stuff/*.out
+Latex Stuff/*.gz
+Latex Stuff/*.pdf

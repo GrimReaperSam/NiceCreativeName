@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{hyperref}
+
+\title{Land Use in Taipei \\
+		\large Technical Report}
+\author{Fayez Lahoud \\ Ya-lan Yiue}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+This project is based on data collection, analysis and usage of historical maps and renewal land information in Taipei. The technical work is split into four parts. Obtaining the historical map models, collecting land renewal data, data analysis using QGIS and user interface with ArcGIS. For more information on the code and where everything is, please refer to our github page \textbf{\href{https://github.com/GrimReaperSam/TaipeiLandUse}{https://github.com/GrimReaperSam/TaipeiLandUse}}
+
+\section{Historical Maps}
+\subsection{Resources}
+\begin{itemize}
+\item \href{http://www.historygis.udd.taipei.gov.tw/urban/map/}{HistoryGIS Website}
+\item \href{http://www.historygis.udd.gov.taipei/arcgis/rest/services}{HistoryGIS WMTS Service}
+\end{itemize}
+
+\subsection{Usage}
+The first task we had was to be able to load these maps and work with them, for that we looked at QGIS which is a free open source geographic information system. With that we were able to work with yearly satellite maps starting from 2013. We were also able to use infrared maps, also provided by the HistoryGIS service.
+
+\section{Data Collection}
+\subsection{Resources}
+\begin{itemize}
+\item Illegal rooftops declared in years \href{https://www.google.com/maps/d/u/0/viewer?mid=1IrEuuGz5J3jnpOkcHxnIozvXgfs&ll=25.06126232467532\%2C121.55392830000005&z=12}{2014} and \href{https://www.udd.gov.taipei/FileUpload/38-10589/Documents/208\%E9\%A0\%82\%E6\%A8\%93\%E5\%B0\%88\%E6\%A1\%88\%E6\%A1\%88\%E4\%BB\%B6\%E6\%B8\%85\%E5\%86\%8A(1061025\%E6\%9B\%B4\%E6\%96\%B0).pdf}{2015}
+\item Renewal data from \href{https://uro.gov.taipei/News.aspx?n=AF4D78CF694B745C\&sms=CCC54E6046E281ED
+}{Taipei Urban Regeneration Office}
+\item \href{https://twland.ronny.tw}{Land Number to GeoJSON API}
+\item Land Price from \href{https://data.gov.tw/dataset/62206 }{Taiwan National Development Council}
+\end{itemize}
+
+\subsection{Usage}
+This data was not localized in one source and as such we had to devise different methods to obtain it. 
+
+For the illegal rooftops, we obtained one \textbf{CSV} and one \textbf{PDF} file. We were able to easily parse them and collect the coordinates \textit{(lat, lon)} of every illegal structure in these documents. This resource has no date accompanying it, they are all assumed to predate any other resources we have and have remained until their date of declaration. In total we had 435 illegal structure locations.
+
+The renewal lands information was spread across multiple scanned \textbf{PDF}s. Each renewal area had its own file and they were organized by districts. We chose to limit ourselves to data coming after 2012 since the land numbering system has changed in Taipei. For each \textbf{PDF} we used google's OCR to obtain the land numbers we are interested in, and reviewed them manually to fix any mistakes. In total we were able to obtain 330 renewal areas. In order to work with these areas, we translated them into GeoJSON using the previously mentioned land number to GeoJSON API. Scripts responsible for download and manipulating this data can be found under the folder \textit{OCR}.
+
+The land prices were provided for every year since 2013 in \textbf{CSV} format, however they were for all the numbers in Taipei. We only kept the ones relevant to us by checking the correspondence with the numbers from the renewal areas.
+
+\section{Data Analysis}
+
+\subsection{Resources}
+\begin{itemize}
+\item Historical Maps
+\item Collected Data
+\item \href{https://qgis.org/en/site/}{QGIS 3.0.0 Girona}
+\item opencv-python
+\item pandas
+\end{itemize}
+
+\subsection{Usage}
+With QGIS, we load the yearly satellite and infrared maps, and use them to compute information surrounding the renewal areas. All the implementations can be found under the folder \textit{Scripts}.
+
+\subsubsection{Renewal areas and illegal rooftops}
+In the following we note a renewal area by $r$ and illegal rooftop by $t$. The sets of renewal areas and illegal rooftops are denoted by $R$ and $T$, respectively.
+We calculate how many illegal rooftops fall in the neighborhood of each renewal area. The neighborhood is defined by a threshold distance $\theta$. Then the number of rooftops is defined as:
+\begin{equation}
+	N_{r_i} = \sum_{t \in T} 1_{d(t, r_i) < \theta}
+\end{equation}
+We also calculate the minimum distance $d_{r_i}$ between a renewal area and its closest illegal rooftop as:
+\begin{equation}
+	d_{r_i} = \min_{t \in T} d(t, r_i)
+\end{equation}
+We also store the renewal lands areas and divisions as some lands have only a single division while others could have up to 30.
+
+\subsubsection{Renewal areas and green index}
+We also use the infrared maps in conjunction with the satellite imagery in order to estimate the amount of green areas around the renewal lands. We do that with three heuristic measures. In the following I will denote $R$, $G$ and $B$ as the names of the channels in the RGB color space, $I$ for the infrared image and $H$, $S$ and $V$ for the HSV space. The measures below are calculated for every year
+
+\paragraph{HSV index}
+In HSV space, we can threshold the green color by setting a lower and upper bound on the pixel value, and mask it if falls outside the specified range. We use opencv's HSV implementation and set the lower and upper bounds as $g_{Low} = [30, 0, 0]$ and $g_{High} = [70, 255, 255]$. The mask is then calculated for pixel $i$ as:
+\begin{equation}
+	M^i_{HSV} = 1_{g_{Low} < i < g_{High}}
+\end{equation}
+
+\paragraph{NDVI index}
+The NDVI index is based on the difference between the infrared and red channels and allows to spot vegetation from satellite imagery. The NDVI can be calculate for pixel $i$ as:
+\begin{equation}
+	{NDVI}_i = \frac{I_i - R_i}{I_i + R_i}
+\end{equation}
+High values of NDVI indicate a higher probability of vegetation, so we devise a mask with a threshold $NDVI_{High}$:
+\begin{equation}
+	M^i_{NDVI} = 1_{|NDVI_i| > NDVI_{High}}
+\end{equation}
+
+\paragraph{Dark Map index}
+This index is close to the NDVI index, however it accentuates the differences between light and dark values in color and infrared by using a scaled sigmoid function. For the full formulation please check our implementation.
+
+\subsubsection{Binding everything}
+All the data revolves around renewal areas, so at the end we group everything by renewal area and formulate a \textbf{CSV} file which contains for every land all the information above and the land price evolution per year. This file will be used later in order to show our data on the user interface
+
+\section{User Interface}
+\subsection{Resources}
+\begin{itemize}
+\item Historical Maps
+\item Collected CSV file
+\item ArcGIS javascript API
+\end{itemize}
+
+\subsection{Usage}
+
+
+\end{document}

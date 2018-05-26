@@ -2,6 +2,8 @@ import sys
 import geocoder
 import pandas as pd
 
+# Transform illegal rooftop data into useful Lat/Lon coordinates
+
 mapquest_key = 'efOlHAySH1y4iscNjRp5muxVlEbLpt21'
 googlemaps_key = 'AIzaSyC-NIgKjVSQKxzx9quLrhJhCrGZ1AViKW8'
 

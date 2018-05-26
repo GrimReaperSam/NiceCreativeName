@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis version="3.0.0-Girona" projectname="">
+<qgis projectname="" version="3.0.0-Girona">
   <title></title>
   <autotransaction active="0"/>
   <evaluateDefaultValues active="0"/>
@@ -18,28 +18,44 @@
   </projectCrs>
   <layer-tree-group>
     <customproperties/>
-    <layer-tree-layer expanded="1" id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" name="102年版航測影像" providerKey="wms" checked="Qt::Checked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2013&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/">
+    <layer-tree-layer id="WM_3f7bcec8_ee19_47ac_9b88_d508a82cd9bd" source=" crs='EPSG:3857' format='PNG32' layer='0' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2013/MapServer' table=&quot;&quot; sql=" checked="Qt::Unchecked" providerKey="mapserver" expanded="1" name="WM">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" name="104年版航測影像" providerKey="wms" checked="Qt::Unchecked" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2015&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/">
+    <layer-tree-layer id="106年版航測影像_728bc7cb_7c2f_410e_aded_aa249da275a6" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2017&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" checked="Qt::Unchecked" providerKey="wms" expanded="1" name="106年版航測影像">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="NIR_2015_71c7739a_1f68_4c3f_8dec_6599c2705705" source=" crs='EPSG:3857' format='PNG32' layer='21' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Image/NIR_2015/MapServer' table=&quot;&quot; sql=" checked="Qt::Unchecked" providerKey="mapserver" expanded="1" name="NIR_2015">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="土地使用分區圖_2c661c08_5d6f_41fa_b5cf_108983b95b13" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=UrbanPlan&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" checked="Qt::Unchecked" providerKey="wms" expanded="1" name="土地使用分區圖">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2013&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" checked="Qt::Checked" providerKey="wms" expanded="1" name="102年版航測影像">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" source="contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2015&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/" checked="Qt::Unchecked" providerKey="wms" expanded="1" name="104年版航測影像">
       <customproperties/>
     </layer-tree-layer>
     <custom-order enabled="0">
       <item>104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8</item>
       <item>102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d</item>
+      <item>土地使用分區圖_2c661c08_5d6f_41fa_b5cf_108983b95b13</item>
+      <item>NIR_2015_71c7739a_1f68_4c3f_8dec_6599c2705705</item>
+      <item>106年版航測影像_728bc7cb_7c2f_410e_aded_aa249da275a6</item>
+      <item>WM_3f7bcec8_ee19_47ac_9b88_d508a82cd9bd</item>
     </custom-order>
   </layer-tree-group>
-  <snapping-settings unit="1" tolerance="12" intersection-snapping="0" type="1" enabled="0" mode="2">
+  <snapping-settings type="1" tolerance="12" enabled="0" intersection-snapping="0" unit="1" mode="2">
     <individual-layer-settings/>
   </snapping-settings>
   <relations/>
-  <mapcanvas name="theMapCanvas" annotationsVisible="1">
+  <mapcanvas annotationsVisible="1" name="theMapCanvas">
     <units>degrees</units>
     <extent>
-      <xmin>121.52233695287067405</xmin>
-      <ymin>25.05682722652663585</ymin>
-      <xmax>121.52564374601060138</xmax>
-      <ymax>25.05964146364179612</ymax>
+      <xmin>121.55370188205739623</xmin>
+      <ymin>25.05599842671835376</ymin>
+      <xmax>121.55496584204260557</xmax>
+      <ymax>25.05831539822064968</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -57,21 +73,41 @@
     <rendermaptile>0</rendermaptile>
   </mapcanvas>
   <legend updateDrawingOrder="true">
-    <legendlayer drawingOrder="-1" name="102年版航測影像" showFeatureCount="0" checked="Qt::Checked" open="true">
-      <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" visible="1" isInOverview="0"/>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Unchecked" name="WM">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="0" layerid="WM_3f7bcec8_ee19_47ac_9b88_d508a82cd9bd" isInOverview="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" name="104年版航測影像" showFeatureCount="0" checked="Qt::Unchecked" open="true">
-      <filegroup hidden="false" open="true">
-        <legendlayerfile layerid="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" visible="0" isInOverview="0"/>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Unchecked" name="106年版航測影像">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="0" layerid="106年版航測影像_728bc7cb_7c2f_410e_aded_aa249da275a6" isInOverview="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Unchecked" name="NIR_2015">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="0" layerid="NIR_2015_71c7739a_1f68_4c3f_8dec_6599c2705705" isInOverview="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Unchecked" name="土地使用分區圖">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="0" layerid="土地使用分區圖_2c661c08_5d6f_41fa_b5cf_108983b95b13" isInOverview="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Checked" name="102年版航測影像">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="1" layerid="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d" isInOverview="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" showFeatureCount="0" checked="Qt::Unchecked" name="104年版航測影像">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile visible="0" layerid="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8" isInOverview="0"/>
       </filegroup>
     </legendlayer>
   </legend>
   <mapViewDocks/>
   <mapViewDocks3D/>
   <projectlayers>
-    <maplayer maxScale="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" refreshOnNotifyMessage="" type="raster" autoRefreshEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -118,7 +154,7 @@
           </spatialrefsys>
         </crs>
         <extent>
-          <spatial maxx="0" dimensions="2" minz="0" maxy="0" minx="0" miny="0" maxz="0" crs=""/>
+          <spatial minx="0" maxz="0" crs="" maxy="0" miny="0" maxx="0" minz="0" dimensions="2"/>
           <temporal>
             <period>
               <start></start>
@@ -151,7 +187,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer opacity="1" band="1" type="singlebandcolordata" alphaBand="-1">
+        <rasterrenderer type="singlebandcolordata" opacity="1" band="1" alphaBand="-1">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -162,13 +198,13 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation colorizeGreen="255" grayscaleMode="0" saturation="0" colorizeOn="0" colorizeRed="255" colorizeBlue="255" colorizeStrength="100"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="255" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="255" colorizeOn="0"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
     </maplayer>
-    <maplayer maxScale="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" refreshOnNotifyMessage="" type="raster" autoRefreshEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
       <extent>
         <xmin>13519522.51227671653032303</xmin>
         <ymin>2870591.12031655060127378</ymin>
@@ -228,7 +264,7 @@
         <map-layer-style name="default"/>
       </map-layer-style-manager>
       <pipe>
-        <rasterrenderer opacity="1" band="1" type="singlebandcolordata" alphaBand="-1">
+        <rasterrenderer type="singlebandcolordata" opacity="1" band="1" alphaBand="-1">
           <rasterTransparency/>
           <minMaxOrigin>
             <limits>None</limits>
@@ -239,8 +275,358 @@
             <stdDevFactor>2</stdDevFactor>
           </minMaxOrigin>
         </rasterrenderer>
-        <brightnesscontrast contrast="0" brightness="0"/>
-        <huesaturation colorizeGreen="128" grayscaleMode="0" saturation="0" colorizeOn="0" colorizeRed="255" colorizeBlue="128" colorizeStrength="100"/>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="128" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="128" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>13519522.51227671653032303</xmin>
+        <ymin>2870591.12031655060127378</ymin>
+        <xmax>13544371.12645299732685089</xmax>
+        <ymax>2901986.34665950899943709</ymax>
+      </extent>
+      <id>106年版航測影像_728bc7cb_7c2f_410e_aded_aa249da275a6</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Image_2017&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>106年版航測影像</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+        <links/>
+      </resourceMetadata>
+      <customproperties>
+        <property key="identify/format" value="Undefined"/>
+      </customproperties>
+      <provider>wms</provider>
+      <noData>
+        <noDataList useSrcNoData="0" bandNo="1"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer type="singlebandcolordata" opacity="1" band="1" alphaBand="-1">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="128" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="128" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>13519487.88307235948741436</xmin>
+        <ymin>2870151.97744519077241421</ymin>
+        <xmax>13544338.64005295932292938</xmax>
+        <ymax>2902212.29574210196733475</ymax>
+      </extent>
+      <id>NIR_2015_71c7739a_1f68_4c3f_8dec_6599c2705705</id>
+      <datasource> crs='EPSG:3857' format='PNG32' layer='21' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Image/NIR_2015/MapServer' table="" sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <timestamp>2018-05-25T23:35:51</timestamp>
+      <layername>NIR_2015</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial minx="0" maxz="0" crs="" maxy="0" miny="0" maxx="0" minz="0" dimensions="2"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+      </resourceMetadata>
+      <customproperties>
+        <property key="WMSBackgroundLayer" value="false"/>
+        <property key="WMSPublishDataSourceUrl" value="false"/>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Feature"/>
+      </customproperties>
+      <provider>arcgismapserver</provider>
+      <noData>
+        <noDataList useSrcNoData="0" bandNo="1"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer type="singlebandcolordata" opacity="1" band="1" alphaBand="-1">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="128" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="2" colorizeGreen="128" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>13520485.98503861203789711</xmin>
+        <ymin>2870872.15687838662415743</ymin>
+        <xmax>13543939.97322366945445538</xmax>
+        <ymax>2901715.87808178132399917</ymax>
+      </extent>
+      <id>WM_3f7bcec8_ee19_47ac_9b88_d508a82cd9bd</id>
+      <datasource> crs='EPSG:3857' format='PNG32' layer='0' url='http://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_2013/MapServer' table="" sql=</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <timestamp>2018-05-25T23:35:52</timestamp>
+      <layername>WM</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+        <links/>
+      </resourceMetadata>
+      <customproperties>
+        <property key="identify/format" value="Feature"/>
+      </customproperties>
+      <provider>arcgismapserver</provider>
+      <noData>
+        <noDataList useSrcNoData="0" bandNo="1"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer type="singlebandcolordata" opacity="1" band="1" alphaBand="-1">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="128" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="128" colorizeOn="0"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer type="raster" maxScale="0" autoRefreshEnabled="0" refreshOnNotifyMessage="" autoRefreshTime="0" refreshOnNotifyEnabled="0" minScale="1e+8" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>13519522.51227671653032303</xmin>
+        <ymin>2870591.12031655060127378</ymin>
+        <xmax>13544371.12645299732685089</xmax>
+        <ymax>2901986.34665950899943709</ymax>
+      </extent>
+      <id>土地使用分區圖_2c661c08_5d6f_41fa_b5cf_108983b95b13</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3857&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=UrbanPlan&amp;styles=default&amp;tileMatrixSet=GoogleMapsCompatible&amp;url=http://www.historygis.udd.taipei.gov.tw/WMTS/</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>土地使用分區圖</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
+          <srsid>3857</srsid>
+          <srid>3857</srid>
+          <authid>EPSG:3857</authid>
+          <description>WGS 84 / Pseudo Mercator</description>
+          <projectionacronym>merc</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type></type>
+        <title></title>
+        <abstract></abstract>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys>
+            <proj4></proj4>
+            <srsid>0</srsid>
+            <srid>0</srid>
+            <authid></authid>
+            <description></description>
+            <projectionacronym></projectionacronym>
+            <ellipsoidacronym></ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial minx="0" maxz="0" crs="" maxy="0" miny="0" maxx="0" minz="0" dimensions="2"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+      </resourceMetadata>
+      <customproperties>
+        <property key="WMSBackgroundLayer" value="false"/>
+        <property key="WMSPublishDataSourceUrl" value="false"/>
+        <property key="embeddedWidgets/count" value="0"/>
+        <property key="identify/format" value="Undefined"/>
+      </customproperties>
+      <provider>wms</provider>
+      <noData>
+        <noDataList useSrcNoData="0" bandNo="1"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer type="singlebandcolordata" opacity="0.5" band="1" alphaBand="-1">
+          <rasterTransparency/>
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeBlue="128" saturation="0" colorizeStrength="100" colorizeRed="255" grayscaleMode="0" colorizeGreen="128" colorizeOn="0"/>
         <rasterresampler maxOversampling="2"/>
       </pipe>
       <blendMode>0</blendMode>
@@ -249,93 +635,97 @@
   <layerorder>
     <layer id="104年版航測影像_0eb03d61_3c93_4743_9207_c628588c23b8"/>
     <layer id="102年版航測影像_55c0f76f_ad00_4ce3_a52a_5d9862dc9c5d"/>
+    <layer id="土地使用分區圖_2c661c08_5d6f_41fa_b5cf_108983b95b13"/>
+    <layer id="NIR_2015_71c7739a_1f68_4c3f_8dec_6599c2705705"/>
+    <layer id="106年版航測影像_728bc7cb_7c2f_410e_aded_aa249da275a6"/>
+    <layer id="WM_3f7bcec8_ee19_47ac_9b88_d508a82cd9bd"/>
   </layerorder>
   <properties>
-    <WCSUrl type="QString"></WCSUrl>
-    <DefaultStyles>
-      <Opacity type="double">1</Opacity>
-      <RandomColors type="bool">true</RandomColors>
-      <Line type="QString"></Line>
-      <Fill type="QString"></Fill>
-      <ColorRamp type="QString"></ColorRamp>
-      <Marker type="QString"></Marker>
-    </DefaultStyles>
     <WFSUrl type="QString"></WFSUrl>
     <WMSServiceAbstract type="QString"></WMSServiceAbstract>
+    <WMSContactOrganization type="QString"></WMSContactOrganization>
+    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+    <WMSOnlineResource type="QString"></WMSOnlineResource>
     <Measurement>
-      <AreaUnits type="QString">m2</AreaUnits>
       <DistanceUnits type="QString">meters</DistanceUnits>
+      <AreaUnits type="QString">m2</AreaUnits>
     </Measurement>
-    <WMSServiceTitle type="QString"></WMSServiceTitle>
+    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+    <WMSContactMail type="QString"></WMSContactMail>
+    <PAL>
+      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
+      <CandidatesPoint type="int">16</CandidatesPoint>
+      <SearchMethod type="int">0</SearchMethod>
+      <ShowingCandidates type="bool">false</ShowingCandidates>
+      <DrawRectOnly type="bool">false</DrawRectOnly>
+      <CandidatesPolygon type="int">30</CandidatesPolygon>
+      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
+      <ShowingAllLabels type="bool">false</ShowingAllLabels>
+      <CandidatesLine type="int">50</CandidatesLine>
+    </PAL>
+    <WMSContactPerson type="QString"></WMSContactPerson>
+    <WFSTLayers>
+      <Insert type="QStringList"/>
+      <Update type="QStringList"/>
+      <Delete type="QStringList"/>
+    </WFSTLayers>
+    <WMSContactPosition type="QString"></WMSContactPosition>
+    <WCSUrl type="QString"></WCSUrl>
     <Paths>
       <Absolute type="bool">false</Absolute>
     </Paths>
-    <WFSLayers type="QStringList"/>
-    <WMSContactPerson type="QString"></WMSContactPerson>
-    <WMSUrl type="QString"></WMSUrl>
-    <WMSContactPhone type="QString"></WMSContactPhone>
-    <WCSLayers type="QStringList"/>
-    <WFSTLayers>
-      <Insert type="QStringList"/>
-      <Delete type="QStringList"/>
-      <Update type="QStringList"/>
-    </WFSTLayers>
-    <WMSKeywordList type="QStringList">
-      <value></value>
-    </WMSKeywordList>
-    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
-    <Gui>
-      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
-      <CanvasColorGreenPart type="int">0</CanvasColorGreenPart>
-      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
-      <CanvasColorBluePart type="int">0</CanvasColorBluePart>
-      <CanvasColorRedPart type="int">0</CanvasColorRedPart>
-      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
-      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
-    </Gui>
-    <Identify>
-      <disabledLayers type="QStringList"/>
-    </Identify>
-    <PAL>
-      <DrawRectOnly type="bool">false</DrawRectOnly>
-      <CandidatesPolygon type="int">30</CandidatesPolygon>
-      <ShowingPartialsLabels type="bool">true</ShowingPartialsLabels>
-      <CandidatesPoint type="int">16</CandidatesPoint>
-      <ShowingAllLabels type="bool">false</ShowingAllLabels>
-      <ShowingCandidates type="bool">false</ShowingCandidates>
-      <CandidatesLine type="int">50</CandidatesLine>
-      <SearchMethod type="int">0</SearchMethod>
-      <DrawOutlineLabels type="bool">true</DrawOutlineLabels>
-    </PAL>
-    <WMSOnlineResource type="QString"></WMSOnlineResource>
-    <WMSPrecision type="QString">8</WMSPrecision>
-    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
-    <WMSContactOrganization type="QString"></WMSContactOrganization>
-    <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
     <Macros>
       <pythonCode type="QString"></pythonCode>
     </Macros>
+    <WFSLayers type="QStringList"/>
     <Legend>
       <filterByMap type="bool">false</filterByMap>
     </Legend>
-    <WMSContactPosition type="QString"></WMSContactPosition>
-    <WMSUseLayerIDs type="bool">false</WMSUseLayerIDs>
+    <Gui>
+      <SelectionColorBluePart type="int">0</SelectionColorBluePart>
+      <CanvasColorRedPart type="int">0</CanvasColorRedPart>
+      <CanvasColorGreenPart type="int">0</CanvasColorGreenPart>
+      <SelectionColorGreenPart type="int">255</SelectionColorGreenPart>
+      <SelectionColorAlphaPart type="int">255</SelectionColorAlphaPart>
+      <CanvasColorBluePart type="int">0</CanvasColorBluePart>
+      <SelectionColorRedPart type="int">255</SelectionColorRedPart>
+    </Gui>
+    <Measure>
+      <Ellipsoid type="QString">WGS84</Ellipsoid>
+    </Measure>
+    <Identify>
+      <disabledLayers type="QStringList"/>
+    </Identify>
+    <WMSAccessConstraints type="QString">None</WMSAccessConstraints>
+    <WMSPrecision type="QString">8</WMSPrecision>
+    <WCSLayers type="QStringList"/>
+    <DefaultStyles>
+      <Fill type="QString"></Fill>
+      <Marker type="QString"></Marker>
+      <Line type="QString"></Line>
+      <Opacity type="double">1</Opacity>
+      <RandomColors type="bool">true</RandomColors>
+      <ColorRamp type="QString"></ColorRamp>
+    </DefaultStyles>
+    <PositionPrecision>
+      <Automatic type="bool">true</Automatic>
+      <DecimalPlaces type="int">2</DecimalPlaces>
+      <DegreeFormat type="QString">MU</DegreeFormat>
+    </PositionPrecision>
     <WMSRequestDefinedDataSources type="bool">false</WMSRequestDefinedDataSources>
     <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
     <SpatialRefSys>
       <ProjectionsEnabled type="int">1</ProjectionsEnabled>
     </SpatialRefSys>
-    <PositionPrecision>
-      <Automatic type="bool">true</Automatic>
-      <DegreeFormat type="QString">MU</DegreeFormat>
-      <DecimalPlaces type="int">2</DecimalPlaces>
-    </PositionPrecision>
-    <Measure>
-      <Ellipsoid type="QString">WGS84</Ellipsoid>
-    </Measure>
-    <WMSImageQuality type="int">90</WMSImageQuality>
-    <WMSContactMail type="QString"></WMSContactMail>
+    <WMSContactPhone type="QString"></WMSContactPhone>
+    <WMSKeywordList type="QStringList">
+      <value></value>
+    </WMSKeywordList>
     <WMSFees type="QString">conditions unknown</WMSFees>
+    <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
+    <WMSImageQuality type="int">90</WMSImageQuality>
+    <WMSUrl type="QString"></WMSUrl>
+    <WMSServiceTitle type="QString"></WMSServiceTitle>
   </properties>
   <visibility-presets/>
   <transformContext/>
