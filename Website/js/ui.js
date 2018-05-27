@@ -1,17 +1,21 @@
 var lMap, rMap;
 var lYear, rYear;
-// var lYearLayers = {}, rYearLayers = {};
+var lYearLayers = {},
+  rYearLayers = {};
+var lRooftops, rRooftops;
 //var layers = {};
-var yearLayers = {};
+//var yearLayers = {};
 var years = [2011, 2012, 2013, 2015, 2017];
-var rooftop;
+// var rooftop;
 
 require([
   "esri/map",
   "esri/layers/ArcGISTiledMapServiceLayer",
   "esri/layers/CSVLayer",
+  "esri/layers/FeatureLayer",
   "esri/Color",
   "esri/symbols/SimpleMarkerSymbol",
+  "esri/symbols/SimpleFillSymbol",
   "esri/renderers/SimpleRenderer",
   "esri/InfoTemplate",
   "esri/request",
@@ -24,8 +28,10 @@ require([
   Map,
   ArcGISTiledMapServiceLayer,
   CSVLayer,
+  FeatureLayer,
   Color,
   SimpleMarkerSymbol,
+  SimpleFillSymbol,
   SimpleRenderer,
   InfoTemplate,
   esriRequest,
@@ -34,6 +40,10 @@ require([
   Graphic,
   GeoJsonLayer
 ) {
+  /*
+    Initialize ArcGIS Maps Views
+*/
+
   var initExt = new esri.geometry.Extent({
     xmin: 13520000,
     ymin: 2871000,
@@ -56,24 +66,36 @@ require([
     zoom: 18
   });
 
+  /*
+    Bind right map with the left extent
+*/
+
   var leftConnection = dojo.connect(lMap, "onExtentChange", leftChangeHandler);
+
+  function leftChangeHandler(ext) {
+    rMap.setExtent(ext);
+  }
+
+  /*
+    Load historic maps
+*/
 
   years.forEach(function(year) {
     mapServer =
       "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_" +
       year +
       "/MapServer";
-    yearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
-    // layers["L"][year]["base"] = new ArcGISTiledMapServiceLayer(mapServer);
-    // layers["R"][year]["base"] = new ArcGISTiledMapServiceLayer(mapServer);
+    //yearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
+    lYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
+    rYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
   });
 
-  lMap.addLayers([yearLayers[2011]]);
-  rMap.addLayers([yearLayers[2017]]);
+  lMap.addLayer(lYearLayers[2011]);
+  rMap.addLayer(rYearLayers[2017]);
 
-  function leftChangeHandler(ext) {
-    rMap.setExtent(ext);
-  }
+  /*
+    Year selection slider
+*/
 
   $("#year_slider").ionRangeSlider({
     type: "double",
@@ -98,44 +120,124 @@ require([
     rMap.addLayer(yearLayers[to]);
   }
 
-  // $(document).ready(function() {
-  //   $('input').iCheck({
-  //     checkboxClass: 'icheckbox_flat-grey',
-  //     radioClass: 'iradio_flat-grey'
-  //   });
+  /*
+    Load rooftop csv
+  */
 
-  //   $('input').on('ifChecked', function(event){
-  //     alert("id = " + $(this).val());
-  //   });
-  // });
+  var dotMarker = new SimpleMarkerSymbol(
+    "solid",
+    10,
+    null,
+    new Color([0, 159, 183, 0.7])
+  );
+  var dotRenderer = new SimpleRenderer(dotMarker);
 
-  rooftop = new CSVLayer("./Output.csv");
-  var orangeRed = new Color([238, 69, 0, 0.5]); // hex is #ff4500
-  var marker = new SimpleMarkerSymbol("solid", 15, null, orangeRed);
-  var renderer = new SimpleRenderer(marker);
-  rooftop.setRenderer(renderer);
-  lMap.addLayer(rooftop);
-  //rMap.addLayer(rooftop);
-  rooftop.show();
-  // rooftop.hide();
+  lRooftops = new CSVLayer("data/Output.csv");
+  lRooftops.setRenderer(dotRenderer);
+  lMap.addLayer(lRooftops);
+  lRooftops.hide();
+
+  rRooftops = new CSVLayer("data/Output.csv");
+  rRooftops.setRenderer(dotRenderer);
+  lMap.addLayer(rRooftops);
+  rRooftops.hide();
+
+  /*
+    TODO: 
+    Load Final.csv using papaparse.js
+    Save as {rid:{attr:val}} dictionary
+  */
+
+  /*
+    Load GeoJson file
+    TODO: Load all and save as {(rid:{year: layer}} dictionary
+  */
+
+  var polyMarker = new SimpleFillSymbol(
+    "solid",
+    null,
+    new Color([241, 136, 5, 0.7])
+  );
+  var polyRenderer = new SimpleRenderer(polyMarker);
+
+  lMap.on("load", function() {
+    addGeoJsonLayer();
+  });
+
+  function addGeoJsonLayer() {
+    var rid = "B0569";
+
+    var infoTemplate = new InfoTemplate(
+      "Renewal Case " + rid,
+      "Land ID: ${land_id}<br>"
+    );
+
+    var geoJsonLayer = new GeoJsonLayer({
+      url: "data/" + rid + ".json",
+      infoTemplate: infoTemplate
+    });
+
+    // Zoom in to one guy
+    geoJsonLayer.on("update-end", function(e) {
+      lMap.setExtent(e.target.extent.expand(3));
+    });
+
+    geoJsonLayer.setRenderer(polyRenderer);
+    lMap.addLayer(geoJsonLayer);
+  }
+
+  /*
+    Checkboxes for hiding/showing renew areas & rooftops
+*/
 
   $("#l-renew").iCheck({
     checkboxClass: "icheckbox_flat-grey",
     radioClass: "iradio_flat-grey"
   });
 
-  $("#l-renew").on("ifChecked", function(event) {
-    rooftop.show();
+  $("#l-renew").on("ifChecked", function(event) {});
+
+  $("#l-renew").on("ifUnchecked", function(event) {});
+
+  $("#r-renew").iCheck({
+    checkboxClass: "icheckbox_flat-grey",
+    radioClass: "iradio_flat-grey"
   });
 
-  $("#l-renew").on("ifUnchecked", function(event) {
-    rooftop.hide();
+  $("#r-renew").on("ifChecked", function(event) {});
+
+  $("#r-renew").on("ifUnchecked", function(event) {});
+
+  $("#l-roof").iCheck({
+    checkboxClass: "icheckbox_flat-grey",
+    radioClass: "iradio_flat-grey"
   });
 
-  function dataLayerHandler(isLeft, isRenew, isChecked) {
-    lMap.removeAllLayers();
-    lMap.addLayers([yearLayers[from]]);
-    rMap.removeAllLayers();
-    rMap.addLayers([yearLayers[to]]);
-  }
+  $("#l-roof").on("ifChecked", function(event) {
+    lRooftops.show();
+  });
+
+  $("#l-roof").on("ifUnchecked", function(event) {
+    lRooftops.hide();
+  });
+
+  $("#r-roof").iCheck({
+    checkboxClass: "icheckbox_flat-grey",
+    radioClass: "iradio_flat-grey"
+  });
+
+  $("#r-roof").on("ifChecked", function(event) {
+    rRooftops.show();
+  });
+
+  $("#r-roof").on("ifUnchecked", function(event) {
+    rRooftops.hide();
+  });
+
+  // function dataLayerHandler(isLeft, isRenew, isChecked) {
+  //   lMap.removeAllLayers();
+  //   lMap.addLayers([yearLayers[from]]);
+  //   rMap.removeAllLayers();
+  //   rMap.addLayers([yearLayers[to]]);
+  // }
 });

@@ -5,15 +5,15 @@
   <title>Taipei Land Use</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
-  <link rel="stylesheet" href="css/columns.css">
+  <link rel="stylesheet" href="css/esri.css" />
+  <link rel="stylesheet" href="css/columns.css" />
   <link rel="stylesheet" href="css/normalize.css" />
   <link rel="stylesheet" href="css/ion.rangeSlider.css" />
   <link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css" />
   <link rel="stylesheet" href="css/flat/grey.css" />
   <!-- <link rel="stylesheet" href="css/square/grey.css" /> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-    crossorigin="anonymous">
+    crossorigin="anonymous" />
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
     crossorigin="anonymous"></script>
@@ -28,11 +28,11 @@
 <body>
   <div class="container my-5 py-5">
     <div class="row">
-      <div class="col-4">
+      <div class="col-5">
         <div id="l-map" class="map"></div>
       </div>
-      <div class="col-4">
-        <div class="text-center my-3">
+      <div class="col-2">
+        <div class="text-center my-4">
           <input type="text" id="year_slider" value="" />
         </div>
         <div class="row my-3 text-center">
@@ -40,7 +40,7 @@
             <input id="l-renew" type="checkbox" />
           </div>
           <div class="col ">
-            <img src="img/renew.png" class="icons" />
+            <img title="Renewal Areas" src="img/renew.png" class="icons" />
           </div>
           <div class="col text-left my-auto">
             <input id="r-renew" type="checkbox" />
@@ -51,7 +51,7 @@
             <input id="l-roof" type="checkbox" />
           </div>
           <div class="col">
-            <img src="img/rooftop.png" class="icons" />
+            <img title="Illegal Rooftops" src="img/rooftop.png" class="icons" />
           </div>
           <div class="col text-left my-auto">
             <input id="r-roof" type="checkbox" />
@@ -61,7 +61,7 @@
           <div class="col">
           </div>
           <div class="col">
-            <img src="img/price.png" class="icons" />
+            <img title="Current Value" src="img/price.png" class="icons" />
           </div>
           <div class="col">
           </div>
@@ -70,7 +70,7 @@
           <div class="col">
           </div>
           <div class="col">
-            <img src="img/tree.png" class="icons" />
+            <img title="Greenness" src="img/tree.png" class="icons" />
           </div>
           <div class="col">
           </div>
@@ -79,25 +79,13 @@
           <div class="col">
           </div>
           <div class="col">
-            <img src="img/neighborhood.png" class="icons" />
+            <img title="Rooftops Nearby" src="img/neighborhood.png" class="icons" />
           </div>
           <div class="col">
           </div>
         </div>
-        <!-- <div class="row">
-          <img src="img/rooftop.png" class="icons" />
-        </div>
-        <div class="row">
-          <img src="img/price.png" class="icons" />
-        </div>
-        <div class="row">
-          <img src="img/tree.png" class="icons" />
-        </div>
-        <div class="row">
-          <img src="img/neighborhood.png" class="icons" />
-        </div> -->
       </div>
-      <div class="col-4">
+      <div class="col-5">
         <div id="r-map" class="map"></div>
       </div>
     </div>
@@ -105,8 +93,10 @@
 
   <!-- <script src="js/jquery-1.12.3.min.js"></script>  -->
   <script src="https://js.arcgis.com/3.24/"></script>
+  <!-- <script src="js/init.js"></script> -->
   <script src="js/terraformer.min.js"></script>
   <script src="js/terraformer-arcgis-parser.js"></script>
+  <script src="js/papaparse.js"></script>
   <script src="js/ui.js"></script>
 
 </body>
