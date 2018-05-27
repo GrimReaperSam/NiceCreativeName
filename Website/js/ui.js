@@ -152,17 +152,6 @@ require([
     Load GeoJson file
     TODO: Load all and save as {(rid:{year: layer}} dictionary
   */
-// Assuming you have a list X of renewal land names:
-Papa.parse("../Data/Final.csv", {
-	delimiter: ",",
-	header: true,
-	trimHeader: true,
-	download: true,
-	complete: function(results, file) { 
-		debugger
-		// the results variable will contain the data you want! Have fun
-	}
-});
 
   var polyMarker = new SimpleFillSymbol(
     "solid",
@@ -171,12 +160,25 @@ Papa.parse("../Data/Final.csv", {
   );
   var polyRenderer = new SimpleRenderer(polyMarker);
 
+  geoJsonLayers = {}
   lMap.on("load", function() {
-    X = ['中山區B0260b', '中山區B0508']
-	geoJsonLayers = {}
-	X.forEach(function(ri) {
-	  geoJsonLayers[ri] = addGeoJsonLayer(ri)
-	})
+	Papa.parse("../Data/Final.csv", {
+		delimiter: ",",
+		header: true,
+		trimHeader: true,
+		download: true,
+		keepEmptyRows:false,
+		skipEmptyLines: true,
+		complete: function(results, file) { 
+			// district = '中山區B0785'
+			// geoJsonLayers[district] = addGeoJsonLayer(district)
+			results.data.forEach(function(ri) {
+			  district = ri['district']
+			  geoJsonLayers[district] = addGeoJsonLayer(district)
+			})
+		}
+		});
+
   });
 
   function addGeoJsonLayer(layer_name) {
@@ -186,16 +188,16 @@ Papa.parse("../Data/Final.csv", {
       "Renewal Case " + rid,
       "Land ID: ${land_id}<br>"
     );
-
+	
     var geoJsonLayer = new GeoJsonLayer({
       url: "../OCR/GeoJson/" + rid + ".json",
       infoTemplate: infoTemplate
     });
 
     // Zoom in to one guy
-    geoJsonLayer.on("update-end", function(e) {
-      lMap.setExtent(e.target.extent.expand(3));
-    });
+    // geoJsonLayer.on("update-end", function(e) {
+      // lMap.setExtent(e.target.extent.expand(3));
+    // });
 
     geoJsonLayer.setRenderer(polyRenderer);
     lMap.addLayer(geoJsonLayer);
