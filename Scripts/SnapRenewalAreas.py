@@ -86,7 +86,7 @@ def createScreenshot(files):
 	setNextFeatureExtent()
 
 
-Renewals_dataset = pd.read_csv('%sScripts/test2.csv' % base_dir)
+Renewals_dataset = pd.read_csv('%sFinal.csv' % data_dir)
 rooftops = Renewals_dataset['rooftopsNearby'].as_matrix()
 names = Renewals_dataset['district'].as_matrix()
 
