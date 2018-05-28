@@ -1,10 +1,12 @@
 var lMap, rMap;
 var lYear, rYear;
-var lYearLayers = {},
-  rYearLayers = {};
+var lYearLayers = {};
+var rYearLayers = {};
 var lRooftops, rRooftops;
-var lRenewLayers = {},
-  rRenewLayers = {};
+var lRenewLayers = {};
+var rRenewLayers = {};
+var lRenewShown = false;
+var rRenewShown = false;
 var years = [2011, 2012, 2013, 2015, 2017];
 var data = {};
 // var rooftop;
@@ -128,8 +130,8 @@ require([
     rMap.addLayer(rYearLayers[year]);
   });
 
-  lYear = 2011;
-  rYear = 2017;
+  lYear = 2017;
+  rYear = 2011;
   changeYear(2011, 2017);
 
   /*
@@ -152,12 +154,18 @@ require([
   });
 
   function changeYear(from, to) {
-    lYearLayers[lYear].hide();
-    lYearLayers[from].show();
-    rYearLayers[rYear].hide();
-    rYearLayers[to].show();
-    lYear = from;
-    rYear = to;
+    if (from != lYear) {
+      lYearLayers[lYear].hide();
+      lYearLayers[from].show();
+      lYear = from;
+      displayGeoJsonLayer(true);
+    }
+    if (to != rYear) {
+      rYearLayers[rYear].hide();
+      rYearLayers[to].show();
+      rYear = to;
+      displayGeoJsonLayer(false);
+    }
   }
 
   /*
@@ -252,7 +260,7 @@ require([
 
     // Zoom-in to one guy
     geoJsonLayer.on("update-end", function(e) {
-      if (rid == "松山區B0659") lMap.setExtent(e.target.extent.expand(3));
+      if (rid == "松山區B0556") lMap.setExtent(e.target.extent.expand(5));
     });
 
     geoJsonLayer.setRenderer(polyRenderer);
@@ -263,13 +271,18 @@ require([
     return geoJsonLayer;
   }
 
-  function displayGeoJsonLayer(isLeft, isShown) {
+  function displayGeoJsonLayer(isLeft) {
     for (var rid in data) {
       if (isLeft) {
-        if (isShown && data[rid]["e-year"] < lYear) lRenewLayers[rid].show();
-        else lRenewLayers[rid].hide();
+        if (lRenewShown && data[rid]["e-year"] <= lYear) {
+          lRenewLayers[rid].show();
+          //debugger;
+        } else {
+          lRenewLayers[rid].hide();
+          //debugger;
+        }
       } else {
-        if (isShown && data[rid]["e-year"] < rYear) rRenewLayers[rid].show();
+        if (rRenewShown && data[rid]["e-year"] <= rYear) rRenewLayers[rid].show();
         else rRenewLayers[rid].hide();
       }
     }
@@ -285,10 +298,12 @@ require([
   });
 
   $("#l-renew").on("ifChecked", function(event) {
+    lRenewShown = true;
     displayGeoJsonLayer(true, true);
   });
 
   $("#l-renew").on("ifUnchecked", function(event) {
+    lRenewShown = false;
     displayGeoJsonLayer(true, false);
   });
 
@@ -298,10 +313,12 @@ require([
   });
 
   $("#r-renew").on("ifChecked", function(event) {
+    rRenewShown = true;
     displayGeoJsonLayer(false, true);
   });
 
   $("#r-renew").on("ifUnchecked", function(event) {
+    rRenewShown = false;
     displayGeoJsonLayer(false, false);
   });
 
