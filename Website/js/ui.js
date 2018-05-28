@@ -152,18 +152,12 @@ require([
   });
 
   function changeYear(from, to) {
-    if (from != lYear) {
-      lYearLayers[lYear].hide();
-      lYearLayers[from].show();
-      lYear = from;
-      // displayGeoJsonLayer(true, $("#l-renew").checked);
-    }
-    if (to != rYear) {
-      rYearLayers[rYear].hide();
-      rYearLayers[to].show();
-      rYear = to;
-      // displayGeoJsonLayer(false, $("#r-renew").checked);
-    }
+    lYearLayers[lYear].hide();
+    lYearLayers[from].show();
+    rYearLayers[rYear].hide();
+    rYearLayers[to].show();
+    lYear = from;
+    rYear = to;
   }
 
   /*
@@ -274,7 +268,6 @@ require([
       if (isLeft) {
         if (isShown && data[rid]["e-year"] < lYear) lRenewLayers[rid].show();
         else lRenewLayers[rid].hide();
-        //debugger;
       } else {
         if (isShown && data[rid]["e-year"] < rYear) rRenewLayers[rid].show();
         else rRenewLayers[rid].hide();
