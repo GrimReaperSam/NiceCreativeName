@@ -59,17 +59,24 @@ require([
 
   var lPopup = new Popup(
     {
-      fillSymbol: new SimpleFillSymbol("solid", null, new Color([241, 195, 5, 0.7])),
+      fillSymbol: new SimpleFillSymbol(
+        "solid",
+        null,
+        new Color([241, 195, 5, 0.7])
+      ),
       // popupWindow: false,
       titleInBody: false
-      
     },
     domConstruct.create("div")
   );
 
   var rPopup = new Popup(
     {
-      fillSymbol: new SimpleFillSymbol("solid", null, new Color([241, 195, 5, 0.7])),
+      fillSymbol: new SimpleFillSymbol(
+        "solid",
+        null,
+        new Color([241, 195, 5, 0.7])
+      ),
       // popupWindow: false,
       titleInBody: false
     },
@@ -111,15 +118,19 @@ require([
       "https://www.historygis.udd.gov.taipei/arcgis/rest/services/Aerial/Ortho_" +
       year +
       "/MapServer";
-    //yearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
-    lYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
-    rYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
+    lYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer, {
+      visible: false
+    });
+    lMap.addLayer(lYearLayers[year]);
+    rYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer, {
+      visible: false
+    });
+    rMap.addLayer(rYearLayers[year]);
   });
 
   lYear = 2011;
   rYear = 2017;
-  lMap.addLayer(lYearLayers[2011]);
-  rMap.addLayer(rYearLayers[2017]);
+  changeYear(2011, 2017);
 
   /*
     Year selection slider
@@ -131,22 +142,28 @@ require([
     from: 0,
     to: 4,
     step: 1,
-    values: [2011, 2012, 2013, 2015, 2017],
+    values: years,
     prettify_enabled: false,
     min_interval: 1,
     hide_min_max: true,
     onFinish: function(data) {
       changeYear(data.from_value, data.to_value);
-      lYear = data.from_value;
-      rYear = data.to_value;
     }
   });
 
   function changeYear(from, to) {
-    lMap.removeAllLayers();
-    lMap.addLayer(lYearLayers[from]);
-    rMap.removeAllLayers();
-    rMap.addLayer(rYearLayers[to]);
+    if (from != lYear) {
+      lYearLayers[lYear].hide();
+      lYearLayers[from].show();
+      lYear = from;
+      // displayGeoJsonLayer(true, $("#l-renew").checked);
+    }
+    if (to != rYear) {
+      rYearLayers[rYear].hide();
+      rYearLayers[to].show();
+      rYear = to;
+      // displayGeoJsonLayer(false, $("#r-renew").checked);
+    }
   }
 
   /*
@@ -155,9 +172,9 @@ require([
 
   var dotMarker = new SimpleMarkerSymbol(
     "solid",
-    10,
+    13,
     null,
-    new Color([0, 159, 183, 0.7])
+    new Color([241, 136, 5, 0.8])
   );
   var dotRenderer = new SimpleRenderer(dotMarker);
 
@@ -197,11 +214,10 @@ require([
   var polyMarker = new SimpleFillSymbol(
     "solid",
     null,
-    new Color([241, 136, 5, 0.6])
+    new Color([27, 153, 139, 0.6])
   );
   var polyRenderer = new SimpleRenderer(polyMarker);
 
-  geoJsonLayers = {}
   lMap.on("load", function() {
     for (var rid in data) {
       lRenewLayers[rid] = addGeoJsonLayer(rid, true);
@@ -214,21 +230,19 @@ require([
       rid,
       "Land Number: ${land_id}<br>" +
         data[rid]["featuresCount"] +
-        " units with total area " +
+        " unit(s) with total area " +
         Math.round(data[rid]["area"])
     );
-	
+
     var geoJsonLayer = new GeoJsonLayer({
       url: "data/GeoJson/" + rid + ".json",
+      visible: false,
       infoTemplate: infoTemplate
     });
 
-    geoJsonLayer.on("load", function() {
-      geoJsonLayer.maxScale = 0; // show the states layer at all scales
-      // geoJsonLayer.setSelectionSymbol(
-      //   new SimpleFillSymbol().setOutline(null).setColor("#fb9021")
-      // );
-    });
+    // geoJsonLayer.on("load", function() {
+    //   geoJsonLayer.maxScale = 0;
+    // });
 
     geoJsonLayer.on("click", function(c) {});
 
@@ -243,15 +257,29 @@ require([
     });
 
     // Zoom-in to one guy
-    // geoJsonLayer.on("update-end", function(e) {
-    //   lMap.setExtent(e.target.extent.expand(3));
-    // });
+    geoJsonLayer.on("update-end", function(e) {
+      if (rid == "松山區B0659") lMap.setExtent(e.target.extent.expand(3));
+    });
 
     geoJsonLayer.setRenderer(polyRenderer);
+
     if (isLeft) lMap.addLayer(geoJsonLayer);
     else rMap.addLayer(geoJsonLayer);
 
     return geoJsonLayer;
+  }
+
+  function displayGeoJsonLayer(isLeft, isShown) {
+    for (var rid in data) {
+      if (isLeft) {
+        if (isShown && data[rid]["e-year"] < lYear) lRenewLayers[rid].show();
+        else lRenewLayers[rid].hide();
+        //debugger;
+      } else {
+        if (isShown && data[rid]["e-year"] < rYear) rRenewLayers[rid].show();
+        else rRenewLayers[rid].hide();
+      }
+    }
   }
 
   /*
@@ -263,18 +291,26 @@ require([
     radioClass: "iradio_flat-grey"
   });
 
-  $("#l-renew").on("ifChecked", function(event) {});
+  $("#l-renew").on("ifChecked", function(event) {
+    displayGeoJsonLayer(true, true);
+  });
 
-  $("#l-renew").on("ifUnchecked", function(event) {});
+  $("#l-renew").on("ifUnchecked", function(event) {
+    displayGeoJsonLayer(true, false);
+  });
 
   $("#r-renew").iCheck({
     checkboxClass: "icheckbox_flat-grey",
     radioClass: "iradio_flat-grey"
   });
 
-  $("#r-renew").on("ifChecked", function(event) {});
+  $("#r-renew").on("ifChecked", function(event) {
+    displayGeoJsonLayer(false, true);
+  });
 
-  $("#r-renew").on("ifUnchecked", function(event) {});
+  $("#r-renew").on("ifUnchecked", function(event) {
+    displayGeoJsonLayer(false, false);
+  });
 
   $("#l-roof").iCheck({
     checkboxClass: "icheckbox_flat-grey",
