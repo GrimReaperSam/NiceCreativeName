@@ -3,12 +3,15 @@ var lYear, rYear;
 var lYearLayers = {},
   rYearLayers = {};
 var lRooftops, rRooftops;
-//var layers = {};
-//var yearLayers = {};
+var lRenewLayers = {},
+  rRenewLayers = {};
 var years = [2011, 2012, 2013, 2015, 2017];
+var data = {};
 // var rooftop;
 
 require([
+  "esri/dijit/Popup",
+  "dojo/dom-construct",
   "esri/map",
   "esri/layers/ArcGISTiledMapServiceLayer",
   "esri/layers/CSVLayer",
@@ -25,6 +28,8 @@ require([
   "js/geojsonlayer.js",
   "dojo/domReady!"
 ], function(
+  Popup,
+  domConstruct,
   Map,
   ArcGISTiledMapServiceLayer,
   CSVLayer,
@@ -52,18 +57,39 @@ require([
     spatialReference: { wkid: 3857 }
   });
 
+  var lPopup = new Popup(
+    {
+      fillSymbol: new SimpleFillSymbol("solid", null, new Color([241, 195, 5, 0.7])),
+      // popupWindow: false,
+      titleInBody: false
+      
+    },
+    domConstruct.create("div")
+  );
+
+  var rPopup = new Popup(
+    {
+      fillSymbol: new SimpleFillSymbol("solid", null, new Color([241, 195, 5, 0.7])),
+      // popupWindow: false,
+      titleInBody: false
+    },
+    domConstruct.create("div")
+  );
+
   lMap = new Map("l-map", {
     // nav: true,
     extent: initExt,
     logo: false,
-    zoom: 18
+    zoom: 18,
+    infoWindow: lPopup
   });
 
   rMap = new Map("r-map", {
     // nav: false,
     extent: initExt,
     logo: false,
-    zoom: 18
+    zoom: 18,
+    infoWindow: rPopup
   });
 
   /*
@@ -90,6 +116,8 @@ require([
     rYearLayers[year] = new ArcGISTiledMapServiceLayer(mapServer);
   });
 
+  lYear = 2011;
+  rYear = 2017;
   lMap.addLayer(lYearLayers[2011]);
   rMap.addLayer(rYearLayers[2017]);
 
@@ -106,18 +134,19 @@ require([
     values: [2011, 2012, 2013, 2015, 2017],
     prettify_enabled: false,
     min_interval: 1,
+    hide_min_max: true,
     onFinish: function(data) {
+      changeYear(data.from_value, data.to_value);
       lYear = data.from_value;
       rYear = data.to_value;
-      changeYear(lYear, rYear);
     }
   });
 
   function changeYear(from, to) {
     lMap.removeAllLayers();
-    lMap.addLayer(yearLayers[from]);
+    lMap.addLayer(lYearLayers[from]);
     rMap.removeAllLayers();
-    rMap.addLayer(yearLayers[to]);
+    rMap.addLayer(rYearLayers[to]);
   }
 
   /*
@@ -139,68 +168,89 @@ require([
 
   rRooftops = new CSVLayer("data/Output.csv");
   rRooftops.setRenderer(dotRenderer);
-  lMap.addLayer(rRooftops);
+  rMap.addLayer(rRooftops);
   rRooftops.hide();
 
   /*
-    TODO: 
     Load Final.csv using papaparse.js
     Save as {rid:{attr:val}} dictionary
   */
 
+  Papa.parse("data/Final.csv", {
+    delimiter: ",",
+    header: true,
+    trimHeader: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    download: true,
+    complete: function(results, file) {
+      results.data.forEach(function(r) {
+        data[r["district"]] = r;
+      });
+    }
+  });
+
   /*
     Load GeoJson file
-    TODO: Load all and save as {(rid:{year: layer}} dictionary
   */
-// Assuming you have a list X of renewal land names:
-Papa.parse("../Data/Final.csv", {
-	delimiter: ",",
-	header: true,
-	trimHeader: true,
-	download: true,
-	complete: function(results, file) { 
-		debugger
-		// the results variable will contain the data you want! Have fun
-	}
-});
 
   var polyMarker = new SimpleFillSymbol(
     "solid",
     null,
-    new Color([241, 136, 5, 0.7])
+    new Color([241, 136, 5, 0.6])
   );
   var polyRenderer = new SimpleRenderer(polyMarker);
 
   lMap.on("load", function() {
-    X = ['中山區B0260b', '中山區B0508']
-	geoJsonLayers = {}
-	X.forEach(function(ri) {
-	  geoJsonLayers[ri] = addGeoJsonLayer(ri)
-	})
+    for (var rid in data) {
+      lRenewLayers[rid] = addGeoJsonLayer(rid, true);
+      rRenewLayers[rid] = addGeoJsonLayer(rid, false);
+    }
   });
 
-  function addGeoJsonLayer(layer_name) {
-    var rid = layer_name;
-
+  function addGeoJsonLayer(rid, isLeft) {
     var infoTemplate = new InfoTemplate(
-      "Renewal Case " + rid,
-      "Land ID: ${land_id}<br>"
+      rid,
+      "Land Number: ${land_id}<br>" +
+        data[rid]["featuresCount"] +
+        " units with total area " +
+        Math.round(data[rid]["area"])
     );
 
     var geoJsonLayer = new GeoJsonLayer({
-      url: "../OCR/GeoJson/" + rid + ".json",
+      url: "data/GeoJson/" + rid + ".json",
       infoTemplate: infoTemplate
     });
 
-    // Zoom in to one guy
-    geoJsonLayer.on("update-end", function(e) {
-      lMap.setExtent(e.target.extent.expand(3));
+    geoJsonLayer.on("load", function() {
+      geoJsonLayer.maxScale = 0; // show the states layer at all scales
+      // geoJsonLayer.setSelectionSymbol(
+      //   new SimpleFillSymbol().setOutline(null).setColor("#fb9021")
+      // );
     });
 
+    geoJsonLayer.on("click", function(c) {});
+
+    // change cursor to indicate features are click-able
+    geoJsonLayer.on("mouse-over", function() {
+      if (isLeft) lMap.setMapCursor("pointer");
+      else rMap.setMapCursor("pointer");
+    });
+    geoJsonLayer.on("mouse-out", function() {
+      if (isLeft) lMap.setMapCursor("default");
+      else rMap.setMapCursor("default");
+    });
+
+    // Zoom-in to one guy
+    // geoJsonLayer.on("update-end", function(e) {
+    //   lMap.setExtent(e.target.extent.expand(3));
+    // });
+
     geoJsonLayer.setRenderer(polyRenderer);
-    lMap.addLayer(geoJsonLayer);
-	
-	return geoJsonLayer
+    if (isLeft) lMap.addLayer(geoJsonLayer);
+    else rMap.addLayer(geoJsonLayer);
+
+    return geoJsonLayer;
   }
 
   /*
