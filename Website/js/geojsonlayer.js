@@ -280,8 +280,12 @@ define([
                 graphic.setSymbol(this._getEsriSymbol(graphic.geometry.type));
             }
             // Update SR because terraformer sets incorrect spatial reference
-            graphic.geometry.setSpatialReference(this._inSpatialReference); // NOTE: Has to match features!
-            return graphic;
+			try {
+			graphic.geometry.setSpatialReference(this._inSpatialReference); // NOTE: Has to match features!
+            } catch(e) {
+				console.log(this._url);
+            }
+			return graphic;
         },
 
         _addGraphics: function (arcgisJson) {
@@ -298,7 +302,10 @@ define([
             // Add graphics to the layer with symbols, project if needed
             for (i = 0; i < this._drawCountTotal; i++) {
                 feature = arcgisJson[i];
-                // Create graphic - magically sets the geometry type!
+                if (feature.geometry == undefined) {
+					continue
+				}
+				// Create graphic - magically sets the geometry type!
                 graphic = this._createGraphic(feature);
                 // Add to layer
                 this._addGraphicToLayer(graphic);

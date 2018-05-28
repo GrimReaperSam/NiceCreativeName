@@ -201,6 +201,7 @@ require([
   );
   var polyRenderer = new SimpleRenderer(polyMarker);
 
+  geoJsonLayers = {}
   lMap.on("load", function() {
     for (var rid in data) {
       lRenewLayers[rid] = addGeoJsonLayer(rid, true);
@@ -216,7 +217,7 @@ require([
         " units with total area " +
         Math.round(data[rid]["area"])
     );
-
+	
     var geoJsonLayer = new GeoJsonLayer({
       url: "data/GeoJson/" + rid + ".json",
       infoTemplate: infoTemplate
