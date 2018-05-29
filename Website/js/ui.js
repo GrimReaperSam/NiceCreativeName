@@ -18,6 +18,7 @@ require([
   "esri/layers/ArcGISTiledMapServiceLayer",
   "esri/layers/CSVLayer",
   "esri/layers/FeatureLayer",
+  "esri/layers/GraphicsLayer",
   "esri/Color",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/SimpleFillSymbol",
@@ -36,6 +37,7 @@ require([
   ArcGISTiledMapServiceLayer,
   CSVLayer,
   FeatureLayer,
+  GraphicsLayer,
   Color,
   SimpleMarkerSymbol,
   SimpleFillSymbol,
@@ -64,7 +66,7 @@ require([
       fillSymbol: new SimpleFillSymbol(
         "solid",
         null,
-        new Color([241, 195, 5, 0.7])
+        new Color([9, 69, 70, 0.7])
       ),
       // popupWindow: false,
       titleInBody: false
@@ -77,7 +79,7 @@ require([
       fillSymbol: new SimpleFillSymbol(
         "solid",
         null,
-        new Color([241, 195, 5, 0.7])
+        new Color([9, 69, 70, 0.7])
       ),
       // popupWindow: false,
       titleInBody: false
@@ -132,7 +134,7 @@ require([
 
   lYear = 2017;
   rYear = 2011;
-  changeYear(2011, 2017);
+  changeYear(2012, 2017);
 
   /*
     Year selection slider
@@ -141,7 +143,7 @@ require([
   $("#year_slider").ionRangeSlider({
     type: "double",
     grid: true,
-    from: 0,
+    from: 1,
     to: 4,
     step: 1,
     values: years,
@@ -220,6 +222,14 @@ require([
   );
   var polyRenderer = new SimpleRenderer(polyMarker);
 
+  var highlightMarker = new SimpleFillSymbol(
+    "solid",
+    null,
+    new Color([241, 195, 5, 0.6])
+  );
+  var polyHighlightRenderer = new SimpleRenderer(highlightMarker);
+  var highlight;
+
   lMap.on("load", function() {
     for (var rid in data) {
       lRenewLayers[rid] = addGeoJsonLayer(rid, true);
@@ -246,7 +256,17 @@ require([
     //   geoJsonLayer.maxScale = 0;
     // });
 
-    geoJsonLayer.on("click", function(c) {});
+    geoJsonLayer.on("click", function(c) {
+      if (isLeft) {
+        highlight = new GraphicsLayer();
+        rRenewLayers[rid].graphics.forEach(function(g) {
+          var gClone = new Graphic(g.toJson());
+          gClone.setSymbol(highlightMarker);
+          highlight.add(gClone);
+        });
+        rMap.addLayer(highlight);
+      }
+    });
 
     // change cursor to indicate features are click-able
     geoJsonLayer.on("mouse-over", function() {
@@ -260,7 +280,7 @@ require([
 
     // Zoom-in to one guy
     geoJsonLayer.on("update-end", function(e) {
-      if (rid == "松山區B0556") lMap.setExtent(e.target.extent.expand(5));
+      if (rid == "松山區B0647") lMap.setExtent(e.target.extent.expand(5));
     });
 
     geoJsonLayer.setRenderer(polyRenderer);
@@ -271,18 +291,19 @@ require([
     return geoJsonLayer;
   }
 
+  lMap.infoWindow.on('hide', function(){
+    rMap.removeLayer(highlight);
+  })
+
   function displayGeoJsonLayer(isLeft) {
     for (var rid in data) {
       if (isLeft) {
-        if (lRenewShown && data[rid]["e-year"] <= lYear) {
+        if (lRenewShown && data[rid]["e-year"] <= lYear)
           lRenewLayers[rid].show();
-          //debugger;
-        } else {
-          lRenewLayers[rid].hide();
-          //debugger;
-        }
+        else lRenewLayers[rid].hide();
       } else {
-        if (rRenewShown && data[rid]["e-year"] <= rYear) rRenewLayers[rid].show();
+        if (rRenewShown && data[rid]["e-year"] <= rYear)
+          rRenewLayers[rid].show();
         else rRenewLayers[rid].hide();
       }
     }
@@ -299,12 +320,12 @@ require([
 
   $("#l-renew").on("ifChecked", function(event) {
     lRenewShown = true;
-    displayGeoJsonLayer(true, true);
+    displayGeoJsonLayer(true);
   });
 
   $("#l-renew").on("ifUnchecked", function(event) {
     lRenewShown = false;
-    displayGeoJsonLayer(true, false);
+    displayGeoJsonLayer(true);
   });
 
   $("#r-renew").iCheck({
@@ -314,12 +335,12 @@ require([
 
   $("#r-renew").on("ifChecked", function(event) {
     rRenewShown = true;
-    displayGeoJsonLayer(false, true);
+    displayGeoJsonLayer(false);
   });
 
   $("#r-renew").on("ifUnchecked", function(event) {
     rRenewShown = false;
-    displayGeoJsonLayer(false, false);
+    displayGeoJsonLayer(false);
   });
 
   $("#l-roof").iCheck({
