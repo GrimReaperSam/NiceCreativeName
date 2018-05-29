@@ -1,13 +1,20 @@
+# 台北市都市更新與土地利用 #
 # Taipei Land Use #
 
 In this repository, we collect data from multiple sources regarding renewal areas in Taipei City starting year 2012.
 
 Our data is obtained thanks to 
  * [**Taipei Historical Maps**](https://www.historygis.udd.gov.taipei)
+ * [**地號 GeoJSON API**](http://twland.ronny.tw) for GeoJson Files
  * [**Taipei Urabn Development Department**](https://english.udd.gov.taipei/Default.aspx) for Illegal Rooftops
  * [**Taipei Urban Regeneration Office**](https://english.uro.gov.taipei/Default.aspx) for Renewal Areas
  * [**Taiwan National Development Council**](https://data.gov.tw/dataset/62206) for Land Prices
- 
+
+
+# Screenshot #
+
+![Screenshot](screenshot.png)
+
 # Folders #
  
 ## Data ##
@@ -35,6 +42,14 @@ This folder contains the scripts used to download and parse renewal areas data. 
  * `GeoJson`: GeoJson data files for each renewal area
  * `LandNumber`: Subdivisions of each renewal area
  * `Text`: Raw uncleaned text obtained after OCR on the scans
+
+ Data was colected with the following pipeline:
+
+ * `Crawler/Renewal Pdf Crawler.ipynb`: Retrieves renewal pdfs from Taipei Urban Regeneration Office
+ * `extract.py`: Takes only the first few pages from the raw pdf to speed up the OCR process
+ * `OCR.py`: Gets text from the extracted pdf using Google Drive API
+ * `parser.py`: Basic cleans up and parses land numbers from the text we obtained
+ * `getJson.py`: Gets GeoJson files using 地號 GeoJSON API
  
 ## Rooftop Address ##
 Raw data for the illegal rooftop locations (District/Street Name)
@@ -51,6 +66,14 @@ Python scripts used in QGIS in order to analyse and generate our `final.csv` fil
  * `Utils.py`: Commonly used functions and variables
  
 ## Website ##
-```diff
-- YALAN PLEASE FILL THIS
- ``` 
+This folder contains the website that demonstrates our result. 
+
+ * `index.html`
+ * `js/ui.js`
+ * `css/columns.css`
+
+Icons thanks to
+ * [**Gregor Cresnar**](https://www.flaticon.com/authors/gregor-cresnar)
+ * [**Freepik**](http://www.freepik.com)
+ * [**Smartline**](https://www.flaticon.com/authors/smartline)
+from [Flaticon](https://www.flaticon.com/)
