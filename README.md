@@ -43,12 +43,12 @@ This folder contains the scripts used to download and parse renewal areas data. 
  * `LandNumber`: Subdivisions of each renewal area
  * `Text`: Raw uncleaned text obtained after OCR on the scans
 
- Data was colected with the following pipeline:
+ Data was collected with the following pipeline:
 
  * `Crawler/Renewal Pdf Crawler.ipynb`: Retrieves renewal pdfs from Taipei Urban Regeneration Office
  * `extract.py`: Takes only the first few pages from the raw pdf to speed up the OCR process
  * `OCR.py`: Gets text from the extracted pdf using Google Drive API
- * `parser.py`: Basic cleans up and parses land numbers from the text we obtained
+ * `parser.py`: Basic cleans-up and parses land numbers from the text we obtained
  * `getJson.py`: Gets GeoJson files using 地號 GeoJSON API
  
 ## Rooftop Address ##
@@ -76,4 +76,5 @@ Icons thanks to
  * [**Gregor Cresnar**](https://www.flaticon.com/authors/gregor-cresnar)
  * [**Freepik**](http://www.freepik.com)
  * [**Smartline**](https://www.flaticon.com/authors/smartline)
+
 from [Flaticon](https://www.flaticon.com/)
