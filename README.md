@@ -13,7 +13,7 @@ Our data is obtained thanks to
 
 # Screenshot #
 
-![Screenshot](screenshot.png)
+![Screenshot](screen.png)
 
 # Folders #
  
