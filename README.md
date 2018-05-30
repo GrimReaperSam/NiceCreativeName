@@ -76,5 +76,6 @@ Icons thanks to
  * [**Gregor Cresnar**](https://www.flaticon.com/authors/gregor-cresnar)
  * [**Freepik**](http://www.freepik.com)
  * [**Smartline**](https://www.flaticon.com/authors/smartline)
+ * [**Smashicons**](https://www.flaticon.com/authors/smashicons)
 
 from [Flaticon](https://www.flaticon.com/)

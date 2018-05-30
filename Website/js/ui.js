@@ -15,17 +15,20 @@ require([
   "esri/dijit/Popup",
   "dojo/dom-construct",
   "esri/map",
+  "esri/units",
   "esri/layers/ArcGISTiledMapServiceLayer",
   "esri/layers/CSVLayer",
   "esri/layers/FeatureLayer",
   "esri/layers/GraphicsLayer",
   "esri/Color",
+  "esri/symbols/SimpleLineSymbol",
   "esri/symbols/SimpleMarkerSymbol",
   "esri/symbols/SimpleFillSymbol",
   "esri/renderers/SimpleRenderer",
   "esri/InfoTemplate",
   "esri/request",
   "dojo/_base/array",
+  "esri/geometry/Extent",
   "esri/geometry/Point",
   "esri/graphic",
   "js/geojsonlayer.js",
@@ -34,17 +37,20 @@ require([
   Popup,
   domConstruct,
   Map,
+  Units,
   ArcGISTiledMapServiceLayer,
   CSVLayer,
   FeatureLayer,
   GraphicsLayer,
   Color,
+  SimpleLineSymbol,
   SimpleMarkerSymbol,
   SimpleFillSymbol,
   SimpleRenderer,
   InfoTemplate,
   esriRequest,
   array,
+  Extent,
   Point,
   Graphic,
   GeoJsonLayer
@@ -68,7 +74,8 @@ require([
         new Color([9, 69, 70, 0.7])
       ),
       // popupWindow: false,
-      titleInBody: false
+      titleInBody: false,
+      zoomFactor: 6
     },
     domConstruct.create("div")
   );
@@ -81,7 +88,8 @@ require([
         new Color([9, 69, 70, 0.7])
       ),
       // popupWindow: false,
-      titleInBody: false
+      titleInBody: false,
+      zoomFactor: 6
     },
     domConstruct.create("div")
   );
@@ -109,6 +117,8 @@ require([
 
   function leftChangeHandler(ext) {
     rMap.setExtent(ext);
+    // rPopup.zoomFactor = lMap.getZoom();
+    //debugger;
   }
 
   /*
@@ -153,12 +163,14 @@ require([
 
   function changeYear(from, to) {
     dehighlight();
+    clearBox(false);
     if (from != lYear) {
       lYearLayers[lYear].hide();
       lYearLayers[from].show();
       lYear = from;
       displayGeoJsonLayer(true);
       clearStat();
+      clearBox(true);
     }
     if (to != rYear) {
       rYearLayers[rYear].hide();
@@ -193,7 +205,7 @@ require([
     Load Final.csv using papaparse.js
     Save as {rid:{attr:val}} dictionary
   */
-  Papa.parse("data/Final.csv", {
+  Papa.parse("data/Final2.csv", {
     delimiter: ",",
     header: true,
     trimHeader: true,
@@ -223,9 +235,6 @@ require([
     new Color([241, 195, 5, 0.6])
   );
 
-  var highlight;
-  var hasHighlight = false;
-
   lMap.on("load", function() {
     for (var rid in data) {
       lRenewLayers[rid] = addGeoJsonLayer(rid, true);
@@ -233,12 +242,20 @@ require([
     }
   });
 
+  var highlight;
+  var hasHighlight = false;
+  var lBox, rBox;
+  var hasLBox = false, hasRBox = false;
+
   function addGeoJsonLayer(rid, isLeft) {
     var infoTemplate = new InfoTemplate(
       rid,
-      "Land Number: ${land_id}<br>" +
+      "Case established: " +
+        data[rid]["e-year"] +
+        "<br>Total units: " +
         data[rid]["featuresCount"] +
-        " unit(s) with total area " +
+        " (${land_id} selected)" +
+        "<br>Total area: " +
         Math.round(data[rid]["area"])
     );
 
@@ -259,11 +276,15 @@ require([
       When a renew area on the RIGHT map is selected:
         1. Show statistics of right year
     */
-    geoJsonLayer.on("click", function(c) {
+    geoJsonLayer.on("click", function(e) {
       if (isLeft) {
         highlightRightMap(rid);
         setStat(rid, true);
-      } else setStat(rid, false);
+        drawBox(rid, true);
+      } else {
+        setStat(rid, false);
+        drawBox(rid, false);
+      }
     });
 
     // Change cursor to indicate features are click-able
@@ -278,7 +299,8 @@ require([
 
     // Zoom-in to this guy
     geoJsonLayer.on("update-end", function(e) {
-      if (rid == "松山區B0647") lMap.setExtent(e.target.extent.expand(5));
+      data[rid]["extend"] = e.target.extent;
+      if (rid == "松山區B0647") lMap.setExtent(e.target.extent.expand(6));
     });
 
     geoJsonLayer.setRenderer(polyRenderer);
@@ -302,6 +324,68 @@ require([
     rMap.addLayer(highlight);
     hasHighlight = true;
   }
+
+  var boxMarker = new SimpleFillSymbol(
+    SimpleFillSymbol.STYLE_NULL,
+    new SimpleLineSymbol(
+      SimpleLineSymbol.STYLE_DASHDOT,
+      new Color([255, 255, 255]),
+      2
+    ),
+    new Color([0, 0, 0, 0.25])
+  );
+
+  function drawBox(rid, isLeft) {
+    if (isLeft) {
+      clearBox(true);
+      //var lExt = new Extent(lRenewLayers[rid].fullExtent.toJson());
+      lBox = new GraphicsLayer({ id: "leftBox" });
+      lMap.addLayer(lBox);
+      lBox.add(new Graphic(data[rid]["extend"].expand(2.25), boxMarker));
+      hasLBox = true;
+    }
+    clearBox(false);
+    //var rExt = new Extent(rRenewLayers[rid].fullExtent.toJson());
+    rBox = new GraphicsLayer({ id: "rightBox" });
+    rMap.addLayer(rBox);
+    rBox.add(new Graphic(data[rid]["extend"].expand(2.25), boxMarker));
+    hasRBox = true;
+  }
+
+  function clearBox(isLeft) {
+    if (isLeft && hasLBox) lMap.removeLayer(lBox);
+    if (!isLeft && hasRBox) rMap.removeLayer(rBox);
+  }
+
+  // function drawCircle(rid, isLeft) {
+  //   if (isLeft) {
+  //     clearCircle(true);
+  //     var lCircleGeometry = new Circle({
+  //       center: [data[rid]["lon"], data[rid]["lat"]],
+  //       radius: 1.5 * Math.sqrt(data[rid]["area"]),
+  //       radiusUnit: Units.METERS
+  //     });
+  //     lCircle = new GraphicsLayer({ id: "leftCircle" });
+  //     lMap.addLayer(lCircle);
+  //     lCircle.add(new Graphic(lCircleGeometry, circleMarker));
+  //     hasLCircle = true;
+  //   }
+  //   clearCircle(false);
+  //   var rCircleGeometry = new Circle({
+  //     center: [data[rid]["lon"], data[rid]["lat"]],
+  //     radius: 1.5 * Math.sqrt(data[rid]["area"]),
+  //     radiusUnit: Units.METERS
+  //   });
+  //   rCircle = new GraphicsLayer({ id: "rightCircle" });
+  //   rMap.addLayer(rCircle);
+  //   rCircle.add(new Graphic(rCircleGeometry, circleMarker));
+  //   hasRCircle = true;
+  // }
+
+  // function clearCircle(isLeft) {
+  //   if (isLeft && hasLCircle) lMap.removeLayer(lCircle);
+  //   if (!isLeft && hasRCircle) rMap.removeLayer(rCircle);
+  // }
 
   function setStat(rid, isLeft) {
     if (isLeft) {
@@ -351,12 +435,10 @@ require([
     if (lg > rg) {
       $("#l-green").css("color", green);
       $("#r-green").css("color", grey);
-    }
-    else if (lg < rg) {
+    } else if (lg < rg) {
       $("#r-green").css("color", green);
       $("#l-green").css("color", grey);
-    } 
-    else {
+    } else {
       $("#r-green").css("color", green);
       $("#l-green").css("color", green);
     }
@@ -365,7 +447,8 @@ require([
     if (lr > rr) {
       $("#l-roofNum").css("color", yellow);
       $("#r-roofNum").css("color", grey);
-    } if (lr < rr) {
+    }
+    if (lr < rr) {
       $("#r-roofNum").css("color", yellow);
       $("#l-roofNum").css("color", grey);
     } else {
@@ -388,6 +471,12 @@ require([
   */
   lMap.infoWindow.on("hide", function() {
     dehighlight();
+    clearBox(true);
+    clearBox(false);
+  });
+
+  rMap.infoWindow.on("hide", function() {
+    clearBox(false);
   });
 
   function dehighlight() {
