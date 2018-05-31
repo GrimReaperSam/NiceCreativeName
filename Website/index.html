@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-  <title>Taipei Land Use</title>
+  <title>Renewing Taipei</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="stylesheet" href="css/esri.css" />
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/flat/grey.css" />
   <!-- <link rel="stylesheet" href="css/square/grey.css" /> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato|Open+Sans|Quicksand|Tajawal" rel="stylesheet"> 
 
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="js/ion.rangeSlider.js"></script>
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-  <div class="container my-5 py-5">
+  <div class="container my-5 py-3">
     <div class="row">
       <div class="col-5">
         <div id="l-map" class="map"></div>
@@ -54,31 +55,32 @@
           </div>
         </div>
         <div class="row my-3 text-center">
-          <div id="l-price" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="l-price" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
           <div class="col">
             <img title="Current Value (M)" src="img/price.png" class="icons" />
           </div>
-          <div id="r-price" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="r-price" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
         </div>
         <div class="row my-3 text-center">
-          <div id="l-green" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="l-green" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
           <div class="col">
             <img title="Greenness (%)" src="img/tree.png" class="icons" />
           </div>
-          <div id="r-green" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="r-green" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
         </div>
         <div class="row my-3 text-center">
-          <div id="l-roofNum" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="l-roofNum" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
           <div class="col">
             <img title="Rooftop Additions Nearby" src="img/neighborhood.png" class="icons" />
           </div>
-          <div id="r-roofNum" class="col my-2 text-center" style="font-weight:bold;"></div>
+          <div id="r-roofNum" class="col my-2 text-center" style="font-family: 'Inconsolata', monospace; font-weight:bold;"></div>
         </div>
       </div>
       <div class="col-5">
         <div id="r-map" class="map"></div>
       </div>
     </div>
+    <div class="row"><div class='col-6 offset-3 my-5 text-center' style="font-family: 'Inconsolata', monospace; font-size: 30px;">Renewing Taipei</div></div>
   </div>
 
   <!-- <script src="js/jquery-1.12.3.min.js"></script>  -->

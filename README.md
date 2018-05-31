@@ -1,5 +1,5 @@
 # 台北市都市更新與土地利用 #
-# Taipei Land Use #
+# Renewing Taipei #
 
 In this repository, we collect data from multiple sources regarding renewal areas in Taipei City starting year 2012.
 

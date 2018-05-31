@@ -300,7 +300,7 @@ require([
     // Zoom-in to this guy
     geoJsonLayer.on("update-end", function(e) {
       data[rid]["extend"] = e.target.extent;
-      if (rid == "松山區B0647") lMap.setExtent(e.target.extent.expand(6));
+      if (rid == "松山區B0556") lMap.setExtent(e.target.extent.expand(6));
     });
 
     geoJsonLayer.setRenderer(polyRenderer);
@@ -521,6 +521,8 @@ require([
     lRenewShown = false;
     displayGeoJsonLayer(true);
     dehighlight();
+    clearBox(true);
+    clearBox(false);
   });
 
   $("#r-renew").iCheck({
@@ -537,6 +539,7 @@ require([
     rRenewShown = false;
     displayGeoJsonLayer(false);
     dehighlight();
+    clearBox(false);
   });
 
   $("#l-roof").iCheck({
