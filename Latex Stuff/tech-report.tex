@@ -10,7 +10,7 @@
 
 \maketitle
 
-This project is based on data collection, analysis and usage of historical maps and renewal land information in Taipei. The technical work is split into four parts. Obtaining the historical map models, collecting land renewal data, data analysis using QGIS and user interface with ArcGIS. For more information on the code and where everything is, please refer to our github page \textbf{\href{https://github.com/GrimReaperSam/TaipeiLandUse}{https://github.com/GrimReaperSam/TaipeiLandUse}}
+This project is based on data collection, analysis and usage of historical maps and renewal land information in Taipei. The technical work is split into four parts. Obtaining the historical map models, collecting land renewal data, data analysis using QGIS and user interface with ArcGIS JS API. For more information on the code and where everything is, please refer to our github page \textbf{\href{https://github.com/GrimReaperSam/TaipeiLandUse}{https://github.com/GrimReaperSam/TaipeiLandUse}}
 
 \section{Historical Maps}
 \subsection{Resources}
@@ -100,7 +100,16 @@ All the data revolves around renewal areas, so at the end we group everything by
 \item ArcGIS javascript API
 \end{itemize}
 
-\subsection{Usage}
+\subsection{ArcGIS javascript API}
+For the website, we are mainly playing with features provided by ArcGIS API. However, since GeoJson wasn't officially supported by version 3.24, we were using geojson-layer-js to load the data. Some features also require workarounds to be implemented.
+
+\subsection{Scenario}
+In our UI, we mainly focus on three scenarios:
+\begin{enumerate}
+\item Compare a renewal case by years: the user can use the highlight tool to compare the surroundings between different years
+\item A global perspective of an area: the user can observe different trends in the area
+\item Cross comparison of time and space: the user can explore cases with different time and space combination
+\end{enumerate}
 
 
 \end{document}

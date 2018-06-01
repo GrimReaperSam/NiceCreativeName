@@ -11,9 +11,15 @@ Our data is obtained thanks to
  * [**Taiwan National Development Council**](https://data.gov.tw/dataset/62206) for Land Prices
 
 
-# Screenshot #
+# Screenshot & Demo #
 
 ![Screenshot](screen.png)
+
+
+# How to run it #
+
+1. In the cloned directory, use `python -m http.server` to run the server
+2. `http://localhost:PORT_NUM/Website/index.html`, and here it goes!
 
 # Folders #
  
