@@ -1,6 +1,11 @@
 # 台北市都市更新與土地利用 #
 # Renewing Taipei #
 
+This project was done in the context of **EPFL | Media & Design Lab | Personal Interaction Studio 2018**
+Course Tutors:
+ * Immanuel Koh 
+ * Jeffrey Huang  
+
 In this repository, we collect data from multiple sources regarding renewal areas in Taipei City starting year 2012.
 
 Our data is obtained thanks to 
