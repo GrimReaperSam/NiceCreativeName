@@ -73,7 +73,7 @@ Python scripts used in QGIS in order to analyse and generate our `final.csv` fil
  * `AddressToLatLon.py`: Transforms the raw illegal rooftop address into usable (lat,lon) coordinates
  * `DrawOnMap.py`: Reads the illegal rooftops and renewal area data and displays them on the map
  * `GenerateRenewalsQGIS.py`: Generates the first part of the information about renewal areas relating to illegal rooftops
- * `GenerateRenewalPython.py`: Generates the second part of the information abotu renewal areas relating to land prices, vegetation and dates
+ * `GenerateRenewalPython.py`: Generates the second part of the information about renewal areas relating to land prices, vegetation and dates
  * `SnapIllegalRooftops.py`: Takes snapshots of all the illegal rooftops and stores them in a specified folder
  * `SnapRenewalAreas.py`: Takes snapshots of all the renewal areas and stores them in a specified folder
  * `Utils.py`: Commonly used functions and variables
